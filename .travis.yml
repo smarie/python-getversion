@@ -1,0 +1,103 @@
+language: python
+
+cache: pip
+
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+#  - "3.7"  NOT AVAILABLE ON TRAVIS YET..
+#  - "3.7-dev" # 3.7 development branch
+#  - "nightly" # currently points to 3.7-dev
+# PyPy versions
+#  - "pypy"  # PyPy2 2.5.0
+#  - "pypy3" # Pypy3 2.4.0
+#  - "pypy-5.3.1"
+
+env:
+  global:
+  - GH_REF: git@github.com:smarie/python-getversion.git
+
+before_install:
+  # (a) linux dependencies
+  - sudo apt-get install pandoc
+  - sudo apt-get install ant
+  - sudo apt-get install ant-optional
+
+install:
+  - pip list
+  - python ci_tools/py_install.py pip ci_tools/requirements-pip.txt
+  # travis-specific installs
+  - pip install PyGithub  # for ci_tools/github_release.py
+  - pip install codecov  # See https://github.com/codecov/example-python.
+  - pip list
+
+script:
+#  - coverage run tests.py
+  - pip install .
+  - python -c "import os; os.chdir('..'); import getversion; import getversion.plugin"
+# ***tests***
+#  - coverage run tests.py
+#  - pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html --cov-report term-missing --cov=./getversion -v getversion/tests/
+# now done in a dedicated script to capture exit code 1 and transform it to 0
+  - chmod a+x ./ci_tools/run_tests.sh
+  - sh ./ci_tools/run_tests.sh
+  - python ci_tools/generate-junit-badge.py 100  # generates the badge for the test results and fail build if less than x%
+
+after_success:
+# ***reporting***
+#  - junit2html junit.xml testrun.html  output is really not nice
+  - ant -f ci_tools/generate-junit-html.xml  # generates the html for the test results. Actually we dont use it anymore
+  - codecov
+  - pylint getversion  # note that at the moment the report is simply lost, we dont transform the result into anything
+# ***documentation***
+  - mkdocs build -f docs/mkdocs.yml
+  - mv reports/junit site/
+  # mkdocs gh-deploy requires special care :
+  # ---grant the possibility to push on the repo---
+  - openssl aes-256-cbc -K $encrypted_67de271a4fb2_key -iv $encrypted_67de271a4fb2_iv -in ci_tools/github_travis_rsa.enc -out ci_tools/github_travis_rsa -d
+  # If the output file does not exist, that is because the secret is invalid. This can happen in forked repos so do not fail the build
+  - |
+    if [ -s "ci_tools/github_travis_rsa" ]; then
+      chmod 600 ci_tools/github_travis_rsa
+      eval `ssh-agent -s`  # launch the authentication agent
+      ssh-add ci_tools/github_travis_rsa  # register the decrypted key
+      git config user.name "Automatic Publish"
+      git config user.email "sylvain.marie@schneider-electric.com"
+      git remote add gh-remote "${GH_REF}";
+      git fetch gh-remote && git fetch gh-remote gh-pages:gh-pages;  # make sure we have the latest gh-remote
+      # push but only if this is not a build triggered by a pull request
+      # note: here we use the --dirty flag so that mkdocs does not clean the additional reports that we copied in the site
+      if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_PYTHON_VERSION}" = "3.5" ]; then echo "Pushing to github"; PYTHONPATH=getversion/ mkdocs gh-deploy -v --dirty -f docs/mkdocs.yml --remote-name gh-remote; git push gh-remote gh-pages; fi;
+    else
+      echo "File 'ci_tools/github_travis_rsa' has not been created, please check your encrypted repo token in .travis.yml, on the line starting with 'openssl aes-256-cbc...'"
+    fi
+
+deploy:
+  # Deploy on PyPI on tags
+  - provider: pypi
+    user: "smarie"
+    password:
+      secure: "yaf389gcod/g9nvHtgt4AHuHi2qeVljwuHOTb5l4N2dkoGQz+UZiEiXY80+KcZ3XPHcE2MsrFNO2rKqHVCOjwvtrZCNjM9w2Zk+jBAyOKKx1SICWbfzvhlZN0pSNee6+805N6MrlzJ3SlgtsJeMjLttrh51Zrh2LsashSDI9YNVRG1a5iB6k8LOCp+5PZcuhh9qA0tWxQdxDU/NGcazGx97nrjT+xHaQ1agDt/h9wOZoLlUK+A1TnVesXF8k1DC6sirPmtvF5fCKOFniHZwFV2hS/htEgCuK5fpjheD6nGKNguUw88wiHTCNIuebyqaab79HPrWUNNpoOfJ8sSecJs0d9Kf647AueN8XX3KSDyhs4P+JwtRaAYCsVkqKbqyxlxE6bxe1KoRFREqk9mrad/ify/N9Cwrc02vkuJu3mBNZciO8oqosY1xRlvQQxz+p201eaads8cIMfzJkRVbIF8QC2ADfH9uGnwp1St6lBDx88+ZtM9LvPIzaQsvMXAqvA5mN4TlFBFxDuYDnL6C/sPAfk+Mc8hRWQ0CA2lwRQbLkQXI0VF0QpIAJbNIDrE8apYDVGZ6wZsy+TP5v9yxR2CM3mB+qzX71kYsvNHB3DlK89PXhRt/qLnY4+lhiIwC24YsOiS3KRQlWrE+3fi/8TzNjsrFV/UAnzW9jQk9WkeY="
+    on:
+      tags: true
+      python: 3.5  #only one of the builds have to be deployed
+      # condition: $PYTEST_VERSION = "<3"
+    # server: https://test.pypi.org/legacy/
+    distributions: "sdist bdist_wheel"
+
+  # Create a github release on tags
+  - provider: script
+    script: python ci_tools/github_release.py -s $GITHUB_TOKEN --repo-slug smarie/python-getversion -cf ./docs/changelog.md -d https://smarie.github.io/python-getversion/changelog/ $TRAVIS_TAG
+    skip_cleanup: true
+    on:
+      tags: true
+      python: 3.5  #only one of the builds have to be deployed
+      # condition: $PYTEST_VERSION = "<3"
+
+matrix:
+    fast_finish: true
+
+notifications:
+  email:
+    on_success: never  # options: [always|never|change] default: always
