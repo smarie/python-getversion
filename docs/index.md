@@ -21,10 +21,16 @@ TODO
 
 ## See Also
 
+Concerning the strategies:
  - [PEP396/__version__](https://www.python.org/dev/peps/pep-0396/)
+ - [PEP365/pkg_resources](https://www.python.org/dev/peps/pep-0365/)
  - [pkg_resources documentation](https://setuptools.readthedocs.io/en/latest/pkg_resources.html)
  - [PEP427/wheel](https://smarie.github.io/pytest-patterns/)
  - TODO for other strategies...
+
+Other attempts to reach the same target:
+ - [app_version](https://github.com/lambdalisue/app_version)
+ - [read_version](https://github.com/jwodder/read_version)
 
 ### Others
 
