@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: uzwheel
+Version: 2.9.2
+Summary: A dummy stack with the purpose of maintaining readability of old serialized versions
+Home-page: https://github.schneider-electric.com/SE-AAP/python-dummy
+Maintainer: Sylvain Marié
+Maintainer-email: "Sylvain Marié" <sylvain.marie@schneider-electric.com>
+License: Proprietary
+Download-URL: https://github.schneider-electric.com/SE-AAP/python-dummy/tarball/2.9.2
+Keywords: dummy
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: semver
+
+python-dummy-staxx
+=================
+
+dummy
+
+
