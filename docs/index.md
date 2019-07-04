@@ -72,7 +72,7 @@ Concerning the strategies:
  - [PEP314/Metadata](https://www.python.org/dev/peps/pep-0314/)
  - [PEP396/\__version__](https://www.python.org/dev/peps/pep-0396/)
  - `pkg_resources` [documentation](https://setuptools.readthedocs.io/en/latest/pkg_resources.html) and [PEP365](https://www.python.org/dev/peps/pep-0365/)
- - [PEP427/wheel](https://smarie.github.io/pytest-patterns/)
+ - [PEP427/wheel](https://www.python.org/dev/peps/pep-0427/)
  - [setuptools_scm](https://github.com/pypa/setuptools_scm/)
  - [stdlib_list](https://github.com/jackmaney/python-stdlib-list)
 
