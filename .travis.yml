@@ -34,7 +34,7 @@ script:
 #  - coverage run tests.py
   - pip install .
   - python -c "import os; os.chdir('..'); import getversion"
-  - pip uninstall getversion  # so that the setuptools_scm test can be executed
+  - pip uninstall -y getversion  # so that the setuptools_scm test can be executed
 # ***tests***
 #  - coverage run tests.py
 #  - pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html --cov-report term-missing --cov=./getversion -v getversion/tests/
