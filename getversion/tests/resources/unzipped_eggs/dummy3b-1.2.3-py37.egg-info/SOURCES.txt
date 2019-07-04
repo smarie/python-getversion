@@ -1,0 +1,3 @@
+setup.cfg
+setup.py
+dummy3b/__init__.py

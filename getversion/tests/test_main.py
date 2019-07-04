@@ -6,14 +6,14 @@ import pytest
 from pytest_cases import pytest_fixture_plus, fixture_union
 from setuptools_scm import get_version
 
-import getversion
 from getversion import get_module_version
 
 
 THIS_DIR = dirname(__file__)
 RESOURCES_DIR = join(THIS_DIR, 'resources')
-RESOURCES_EGGS_DIR = join(RESOURCES_DIR, 'eggs')
-RESOURCES_WHEELS_DIR = join(RESOURCES_DIR, 'wheels')
+RESOURCES_EGGS_DIR = join(RESOURCES_DIR, 'unzipped_eggs')
+RESOURCES_WHEELS_DIR = join(RESOURCES_DIR, 'unzipped_wheels')
+
 sys.path.insert(0, RESOURCES_DIR)
 sys.path.insert(0, RESOURCES_EGGS_DIR)
 sys.path.insert(0, RESOURCES_WHEELS_DIR)
@@ -64,8 +64,8 @@ def module_with_version_attr(module_name):
                                                           # ('pandas.core.api', 'pandas'),
                                                           ('dummy2.subpkg_no_version', 'dummy2'),
                                                           ('dummy2.submodule_no_version', 'dummy2'),
-                                                          ('dummy2.subpkg_with_version.submodule_no_version', 'dummy2.subpkg_with_version'),
-                                                          ('pandas.core.api', 'pandas')])
+                                                          ('dummy2.subpkg_with_version.submodule_no_version', 'dummy2.subpkg_with_version')
+                                                          ])
 def submodule_in_pkg_with_version_attr(module_name, root_module_name):
     """
     These modules have a valid __version__ attribute

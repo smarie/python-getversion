@@ -1,0 +1,3 @@
+setup.cfg
+setup.py
+dummy4/__init__.py

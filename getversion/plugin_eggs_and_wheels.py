@@ -1,6 +1,5 @@
 from os import scandir
 from os.path import exists, join, pardir, abspath
-from json import load
 
 
 def read_pkg_name_from_dist_info_toplevel(dist_info_folder_path):
