@@ -2,7 +2,9 @@
 
 (hopefully) universal library to get the package version number of a python module, by combining various strategies (PEP396/version, setuptools/`pkg_resources`, PEP427/wheel, git...)
 
-[![Build Status](https://travis-ci.org/smarie/python-getversion.svg?branch=master)](https://travis-ci.org/smarie/python-getversion) [![Tests Status](https://smarie.github.io/python-getversion/junit/junit-badge.svg?dummy=8484744)](https://smarie.github.io/python-getversion/junit/report.html) [![codecov](https://codecov.io/gh/smarie/python-getversion/branch/master/graph/badge.svg)](https://codecov.io/gh/smarie/python-getversion) [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://smarie.github.io/python-getversion/) [![PyPI](https://img.shields.io/badge/PyPI-getversion-blue.svg)](https://pypi.python.org/pypi/getversion/)
+[![Python versions](https://img.shields.io/pypi/pyversions/getversion.svg)](https://pypi.python.org/pypi/getversion/) [![Build Status](https://travis-ci.org/smarie/python-getversion.svg?branch=master)](https://travis-ci.org/smarie/python-getversion) [![Tests Status](https://smarie.github.io/python-getversion/junit/junit-badge.svg?dummy=8484744)](https://smarie.github.io/python-getversion/junit/report.html) [![codecov](https://codecov.io/gh/smarie/python-getversion/branch/master/graph/badge.svg)](https://codecov.io/gh/smarie/python-getversion)
+
+[![Documentation](https://img.shields.io/badge/doc-latest-blue.svg)](https://smarie.github.io/python-getversion/) [![PyPI](https://img.shields.io/pypi/v/getversion.svg)](https://pypi.python.org/pypi/getversion/) [![Downloads](https://pepy.tech/badge/getversion)](https://pepy.tech/project/getversion) [![Downloads per week](https://pepy.tech/badge/getversion/week)](https://pepy.tech/project/getversion) [![GitHub stars](https://img.shields.io/github/stars/smarie/python-getversion.svg)](https://github.com/smarie/python-getversion/stargazers)
 
 **This is the readme for developers.** The documentation for users is available here: [https://smarie.github.io/python-getversion/](https://smarie.github.io/python-getversion/)
 
@@ -72,20 +74,3 @@ This project is now automatically deployed to PyPI when a tag is created. Anyway
 twine upload dist/* -r pypitest
 twine upload dist/*
 ```
-
-### Merging pull requests with edits - memo
-
-Ax explained in github ('get commandline instructions'):
-
-```bash
-git checkout -b <git_name>-<feature_branch> master
-git pull https://github.com/<git_name>/python-getversion.git <feature_branch> --no-commit --ff-only
-```
-
-if the second step does not work, do a normal auto-merge (do not use **rebase**!):
-
-```bash
-git pull https://github.com/<git_name>/python-getversion.git <feature_branch> --no-commit
-```
-
-Finally review the changes, possibly perform some modifications, and commit.
