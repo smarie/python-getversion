@@ -82,6 +82,7 @@ Other attempts to reach the same target:
 
  - [app_version](https://github.com/lambdalisue/app_version)
  - [importlib_metadata](https://gitlab.com/python-devs/importlib_metadata)
+ - [pkginfo](https://pythonhosted.org/pkginfo/)
  - [read_version](https://github.com/jwodder/read_version)
  
 ### Package versioning best practices
