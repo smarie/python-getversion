@@ -11,24 +11,21 @@ from setuptools import setup, find_packages
 here = path.abspath(path.dirname(__file__))
 
 # *************** Dependencies *********
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = ['stdlib_list']
 DEPENDENCY_LINKS = []
 SETUP_REQUIRES = ['pytest-runner', 'setuptools_scm', 'pypandoc', 'pandoc']
-TESTS_REQUIRE = ['pytest', 'pytest-logging', 'pytest-cov']
+TESTS_REQUIRE = ['pytest', 'pytest-logging', 'pytest-cov', 'pytest-cases>=1.10.1']
 EXTRAS_REQUIRE = {}
 
 # simple check
 try:
     from setuptools_scm import get_version
 except Exception as e:
-    raise_from(Exception('Required packages for setup not found. You may wish you execute '
-                         '"pip install -r ci_tools/requirements-setup.txt" to install them or alternatively install '
-                         'them manually using conda or other system. The list is : ' + str(SETUP_REQUIRES)), e)
+    raise_from(Exception('Required packages for setup not found. Please install `setuptools_scm`'), e)
 
 # ************** ID card *****************
 DISTNAME = 'getversion'
-DESCRIPTION = '(hopefully) universal library to get the version number of a module, by combining various strategies ' \
-              '(PEP396/version, setuptools/`pkg_resources`, PEP427/wheel, git...)'
+DESCRIPTION = 'Get the version number of any python module or package, reliably.'
 MAINTAINER = 'Sylvain MARIE'
 MAINTAINER_EMAIL = 'sylvain.marie@se.com'
 URL = 'https://github.com/smarie/python-getversion'
@@ -38,8 +35,8 @@ LICENSE_LONG = 'License :: OSI Approved :: BSD License'
 version_for_download_url = get_version()
 DOWNLOAD_URL = URL + '/tarball/' + version_for_download_url
 
-KEYWORDS = 'module version source binary package library PEP396 PEP427 pkg_resources setuptools wheel egg egg-info scm ' \
-           'git svn'
+KEYWORDS = 'module version source binary package library PEP345 PEP396 PEP427 pkg_resources setuptools wheel egg ' \
+           'egg-info scm git svn'
 # --Get the long description from the README file
 # with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 #    LONG_DESCRIPTION = f.read()
