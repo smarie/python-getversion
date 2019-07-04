@@ -6,7 +6,7 @@ This is a reminder on how to grant travis the rights to deploy your site on gith
 
 The following does not work on windows as explained [here](https://github.com/travis-ci/travis-ci/issues/4746)
 
-Note: if you get tlsV1 errors below, make sure that you have the latest OpenSSL. If it is not available from you package manager, look at this [compilation sequance](https://github.com/curl/curl/issues/1583#issuecomment-309477196) (replace_fixture all versions with the ones you need / the latest). No need to use nghttp2. Dont forget to add `--with-libssh2` to curl compilation step, as mentioned in the [script](https://github.com/dertin/lemp-stack-debian/blob/develop/install.sh)!
+Note: if you get tlsV1 errors below, make sure that you have the latest OpenSSL. If it is not available from you package manager, look at this [compilation sequance](https://github.com/curl/curl/issues/1583#issuecomment-309477196) (replace all versions with the ones you need / the latest). No need to use nghttp2. Dont forget to add `--with-libssh2` to curl compilation step, as mentioned in the [script](https://github.com/dertin/lemp-stack-debian/blob/develop/install.sh)!
 
 ## Install travis commandline 
 
