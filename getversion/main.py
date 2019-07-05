@@ -1,5 +1,10 @@
 from collections import OrderedDict
-from functools import lru_cache
+
+try:
+    from functools import lru_cache
+except ImportError:
+    from functools32 import lru_cache
+
 from itertools import chain
 from os.path import abspath, join, exists
 import sys
