@@ -5,6 +5,11 @@ except ImportError:
 
 from os.path import exists, join, pardir, abspath
 
+try: # python 3
+    FileNotFoundError
+except NameError:
+    FileNotFoundError = IOError
+
 
 def read_pkg_name_from_dist_info_toplevel(dist_info_folder_path):
     """
@@ -123,8 +128,8 @@ def get_unzipped_wheel_or_egg_version(module  # type: ModuleType
         for _ in it:
             pass
 
-    raise FileNotFoundError("No file matching pattern '%s' found in directory: %s"
-                            % ())
+    raise FileNotFoundError("No file matching egg-info or dist-info name patterns found in directory: %s"
+                            % search_dir)
     #     if s3err is None:
     #         warn(" - (3) this package does not seem to come from an unzipped wheel file: no dist-info folder could be found"
     #              " next to the package __path__, for which contents of 'top_level.txt' matches the package name")
