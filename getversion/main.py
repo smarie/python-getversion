@@ -1,107 +1,34 @@
 from collections import OrderedDict
+from itertools import chain
+from os.path import join, exists
+import sys
+from types import ModuleType
 
 try:
     from functools import lru_cache
 except ImportError:
     from functools32 import lru_cache
 
-from itertools import chain
-from os.path import abspath, join, exists
-import sys
-from types import ModuleType
-
-from stdlib_list import stdlib_list
-
-from getversion.plugin_eggs_and_wheels import get_unzipped_wheel_or_egg_version
-from getversion.plugin_setuptools_scm import scm_get_version_recursive_root
-
 try:  # python 3.5+
     from typing import Union, Iterable, Callable
 except ImportError:
     pass
 
-
-def get_version(thing,  # type: Union[ModuleType]
-                ):
-    """
-    Utility method to return the version of various type of objects
-    :return:
-    """
-    if isinstance(thing, ModuleType):
-        return get_module_version(thing)
-    # elif isinstance(thing, str):
-    #     if thing == '__main__':
-    #         # *******  __main__ module / terminal
-    #         warn("The module is __main__: it has no version")
-    #         return None
-    else:
-        raise NotImplementedError("``get_version` is not implemented for instances of <%s> (received: %s)"
-                                  "" % (type(thing).__name__, thing))
-
-
-# class VersionGetter(ABC):
-#     """
-#     Abstract API that version getting strategies should implement
-#     """
-#     __slots__ = ()
-#
-#     @abstractmethod
-#     def supports_submodules(self):
-#         """
-#
-#         :return: True if the method can be called on a submodule, False if requires a package (root module)
-#         """
-#
-#     @abstractmethod
-#     def get_version(self,
-#                     module  # type: ModuleType
-#                     ):
-#         # type: (...) -> str
-#         """
-#
-#         :return: a string representing the version
-#         """
-
-
-class ModuleVersionNotFound(Exception):
-    """
-    Final exception Raised by get_module_version when the version of a module can not be found
-    """
-    __slots__ = 'module', 'err_dct',
-
-    def __init__(self, module, errors_dict):
-        self.module = module
-        self.err_dct = errors_dict
-        super(ModuleVersionNotFound, self).__init__()
-
-    def __str__(self):
-        msg = "Unable to get version for module %s. Results:\n" % self.module
-        for module, err_dct in self.err_dct.items():
-            msg += " - Results for module %s:\n" % module
-            for strategy, err in err_dct.items():
-                msg += "   - %s: %s\n" % (get_strategy_name(strategy), err)
-        return msg
-
-
-class InvalidVersionFound(Exception):
-    """
-    Error created by get_module_version when a versiongetter returns None instead of a valid version
-    """
-    __slots__ = 'version',
-
-    def __init__(self, version):
-        self.version = version
-
-    def __str__(self):
-        return "Invalid version number: %s" % self.version
+from getversion.plugin_builtins import get_builtin_module_version
+from getversion.plugin_eggs_and_wheels import get_unzipped_wheel_or_egg_version
+from getversion.plugin_setuptools_scm import get_version_using_setuptools_scm
 
 
 def get_strategy_name(strategy):
-    # for now all strategies are callables: easy.
+    # for now, all strategies are callables: easy.
     return strategy.__name__
 
 
-@lru_cache(maxsize=100)
+def get_module_name(module):
+    # for now we only use ModuleType modules
+    return module.__name__
+
+
 def get_module_version_attr(module  # type: ModuleType
                             ):
     # type: (...) -> str
@@ -117,66 +44,6 @@ def get_module_version_attr(module  # type: ModuleType
     :return:
     """
     return module.__version__
-
-
-# def get_version_using_importlib_metadata(module  # type: ModuleType
-#                                          ):
-#     # type: (...) -> str
-#     """
-#     Uses the importlib_metadata backport to read the version.
-#     See https://importlib-metadata.readthedocs.io/en/latest/using.html#overview
-#
-#     Note: unfortunately this provides very bad answers in some cases (e.g. when the module is built-in)
-#     so we have to protect against them
-#
-#     :param module:
-#     :return:
-#     """
-#     # CAN RETURN SOMETHING CRAZY (the version of another distribution!)
-#     # return version(module.__name__)
-#
-#     # WORKAROUND: proceed carefully and protect against crazy answers
-#     from importlib_metadata import distribution
-#     dist = distribution(module.__name__)
-#
-#     # we have to do this sanity check
-#     if dist.metadata['Name'] == module.__name__:
-#         return dist.version
-
-
-@lru_cache(maxsize=1)
-def get_builtin_module_list():
-    return stdlib_list('.'.join([str(v) for v in sys.version_info[0:2]]))
-
-
-@lru_cache(maxsize=-1)
-def is_builtin(module_name):
-    ref_list = get_builtin_module_list()
-    return module_name in ref_list
-
-
-def get_builtin_module_version(module  # type: ModuleType
-                               ):
-    # type: (...) -> str
-    """
-    It the module is in the list of builtin module names, the python version is returned as suggested by PEP396
-    See https://www.python.org/dev/peps/pep-0396/#specification
-
-    :param module:
-    :return:
-    """
-    if module.__name__ in sys.builtin_module_names \
-            or is_builtin(module.__name__):  # `imp.is_builtin` also works but maybe less efficient
-        # what about this ?
-        # from platform import python_version
-        # python_version()
-        # https://stackoverflow.com/a/25477839/7262247
-
-        # full python version
-        sys_version = '.'.join([str(v) for v in sys.version_info])
-        return sys_version
-    else:
-        raise ValueError("Module %s is not a built-in module" % module.__name__)
 
 
 def get_version_using_pkgresources(module  # type: ModuleType
@@ -208,7 +75,7 @@ def get_version_using_pkgresources(module  # type: ModuleType
     # WORKS BUT SLOW WHEN NOT FOUND because it ends up calling 'require'
     # pkg_dist = get_distribution(module.__name__)  # module.__name
 
-    # MUCH FASTER !!!
+    # MUCH FASTER !!! because in case of failure it does not try to do a 'require'
     pkg_dist = working_set.find(Requirement.parse(module.__name__))
 
     # DOES NOT WORK
@@ -228,39 +95,81 @@ def get_version_using_pkgresources(module  # type: ModuleType
         return pkg_dist.version
 
 
-def get_version_using_setuptools_scm(module  # type: ModuleType
-                                     ):  # type: (...) -> str
-    """
-    get version from the source directory if it is under version control
-    :param module:
-    :return:
-    """
-    # ...using setuptools_scm if available
-    return scm_get_version_recursive_root(abspath(module.__file__))
-
-    # if not isinstance(s4err, str):
-    #     warn(" - (4) using setuptools_scm to find the svn/git version raised an error : [{}] {}"
-    #          "".format(type(s4err).__name__, s4err))
-    # else:
-    #     warn(" - (4) impossible to locate the package in order to find the svn/git version: {}"
-    #          "".format(s4err))
-
-
 _STRATEGIES_SUBMODULES = (get_module_version_attr,)
 
 _STRATEGIES_ROOTMODULES = (get_version_using_pkgresources,
                            get_builtin_module_version,  # not first because another package with same name can be installed
-                           # get_version_using_importlib_metadata,  # TODO useful at all ?
+                           # get_version_using_importlib_metadata,  # does not seem useful for now
                            get_unzipped_wheel_or_egg_version,
                            get_version_using_setuptools_scm,
                            )
 
 
+def err_dct_to_str(err_dct  # Dict
+                   ):
+    # type: (...) -> str
+    msg = ""
+    for module, err_dct in err_dct.items():
+        if len(err_dct) > 0:
+            msg += " - Attempts for module %s:\n" % module
+            for strategy, err in err_dct.items():
+                msg += "   - %s: %s\n" % (get_strategy_name(strategy), err)
+    return msg
+
+
+class ModuleVersionNotFound(Exception):
+    """
+    Final exception Raised by get_module_version when the version of a module can not be found
+    """
+    __slots__ = 'module', 'err_dct',
+
+    def __init__(self, module, errors_dict):
+        self.module = module
+        self.err_dct = errors_dict
+        super(ModuleVersionNotFound, self).__init__()
+
+    def __str__(self):
+        return "Unable to get version for module '%s'. Results:\n%s" \
+               % (get_module_name(self.module), err_dct_to_str(self.err_dct))
+
+
+class InvalidVersionFound(Exception):
+    """
+    Error created by get_module_version when a versiongetter returns None instead of a valid version
+    """
+    __slots__ = 'version',
+
+    def __init__(self, version):
+        self.version = version
+
+    def __str__(self):
+        return "Invalid version number: %s" % self.version
+
+
+class DetailedResults(object):
+    """
+    Returned by `get_module_version` for detailed results about which strategy failed before the winning one.
+    """
+    __slots__ = 'module', 'err_dct', 'winning_strategy', 'version_found'
+
+    def __init__(self, module, err_dct, winning_strategy, version_found):
+        self.module = module
+        self.err_dct = err_dct
+        self.winning_strategy = winning_strategy
+        self.version_found = version_found
+
+    def __str__(self):
+        return "Version '%s' found for module '%s' by strategy '%s', after the following failed attempts:\n%s"\
+               % (self.version_found, get_module_name(self.module), get_strategy_name(self.winning_strategy),
+                  err_dct_to_str(self.err_dct))
+
+
+@lru_cache(maxsize=100)
 def get_module_version(module,                                        # type: ModuleType
                        submodule_strategies=_STRATEGIES_SUBMODULES,   # type: Iterable[Callable[[ModuleType], str]]
                        rootmodule_strategies=_STRATEGIES_ROOTMODULES  # type: Iterable[Callable[[ModuleType], str]]
                        ):
-    # type: (...) -> str
+    # type: (...) -> Tuple[str, DetailedResults]
     """
     Helper method to get the version of module `module`.
 
@@ -274,6 +183,9 @@ def get_module_version(module,                                        # type: Mo
     :param rootmodule_strategies:
     :return:
     """
+    # if isinstance(module, str) TODO support str:
+    # '__main__' and '<...' (pydoc, ipython, etc.)
+
     all_errors = OrderedDict()
 
     module_name = module.__name__
@@ -301,7 +213,8 @@ def get_module_version(module,                                        # type: Mo
                 if version_str is None or not isinstance(version_str, str):
                     raise InvalidVersionFound(version_str)
                 else:
-                    return version_str
+                    errors[strategy] = "SUCCESS: %s" % version_str
+                    return version_str, DetailedResults(module, all_errors, strategy, version_str)
 
             except Exception as e:
                 # log the error

@@ -125,4 +125,8 @@ mod = fixture_union("mod", [builtin_module_and_submodule,
 
 
 def test_modules_version(module, expected_version):
-    assert get_module_version(module) == expected_version
+    found_version, detailed_results = get_module_version(module)
+    try:
+        assert found_version == expected_version
+    finally:
+        print(detailed_results)
