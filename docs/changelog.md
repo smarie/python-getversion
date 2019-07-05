@@ -1,9 +1,8 @@
 # Changelog
 
-### 0.5.1 - Bugfixes
+### 0.5.2 - Self `__version__`
 
- - fixed PyPi doc
- - `__version__` should now be available on the distributed `getversion` package.
+`__version__` should now be available on the distributed `getversion` package.
 
 ### 0.5.0 - First public version
 
