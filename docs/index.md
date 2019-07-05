@@ -25,7 +25,28 @@ from getversion import get_module_version
 
 # Get the version of an imported module
 from xml import dom
-print(get_module_version(dom))
+version, details = get_module_version(dom)
+print(version)
+```
+
+yields
+
+```bash
+3.7.3.final.0
+```
+
+Why was this version found ? You can understand it from the `details`:
+
+```bash
+> print(details)
+Version '3.7.3.final.0' found for module 'xml.dom' by strategy 'get_builtin_module_version', after the following failed attempts:
+ - Attempts for module 'xml.dom':
+   - <get_module_version_attr>: module 'xml.dom' has no attribute '__version__'
+ - Attempts for module 'xml':
+   - <get_module_version_attr>: module 'xml' has no attribute '__version__'
+   - <get_version_using_pkgresources>: Invalid version number: None
+   - <get_builtin_module_version>: SUCCESS: 3.7.3.final.0
+
 ```
 
 ### b- Not yet imported
@@ -126,7 +147,8 @@ If your project uses git, I would recommend the following:
 
    for example in your continuous integration engine: `python -c "from setuptools_scm import get_version;get_version('.', write_to='<pkg_name>/_version.py')"`
 
-Inspiration came from [this post](https://stackoverflow.com/questions/17583443/what-is-the-correct-way-to-share-package-version-with-setup-py-and-the-package/17638236#17638236) and [this one](https://github.com/pypa/setuptools_scm/issues/328).
+
+Note: the above was inspired by [this post](https://stackoverflow.com/questions/17583443/what-is-the-correct-way-to-share-package-version-with-setup-py-and-the-package/17638236#17638236) and [this issue](https://github.com/pypa/setuptools_scm/issues/328).
 
 ### Others
 
