@@ -1,3 +1,7 @@
+#  Authors: Sylvain Marie <sylvain.marie@se.com>
+#
+#  License: BSD 3 clause
+
 from getversion.main import get_module_version, DetailedResults, ModuleVersionNotFound
 
 try:

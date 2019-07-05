@@ -1,3 +1,7 @@
+#  Authors: Sylvain Marie <sylvain.marie@se.com>
+#
+#  License: BSD 3 clause
+
 from os.path import join, dirname
 
 from getversion.plugin_eggs_and_wheels import read_pkg_name_from_dist_info_toplevel, read_version_from_dist_info, \

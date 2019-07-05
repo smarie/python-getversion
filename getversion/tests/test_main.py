@@ -1,3 +1,7 @@
+#  Authors: Sylvain Marie <sylvain.marie@se.com>
+#
+#  License: BSD 3 clause
+
 import sys
 from importlib import import_module
 from os.path import dirname, join, pardir

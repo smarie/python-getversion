@@ -1,3 +1,7 @@
+#  Authors: Sylvain Marie <sylvain.marie@se.com>
+#
+#  License: BSD 3 clause
+
 from collections import OrderedDict
 from itertools import chain
 from os.path import join, exists

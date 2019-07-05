@@ -1,3 +1,7 @@
+#  Authors: Sylvain Marie <sylvain.marie@se.com>
+#
+#  License: BSD 3 clause
+
 def get_version_using_importlib_metadata(module  # type: ModuleType
                                          ):
     # type: (...) -> str
