@@ -13,6 +13,6 @@ theme: material  # readthedocs  mkdocs
 markdown_extensions:
   - admonition  # to add notes such as http://squidfunk.github.io/mkdocs-material/extensions/admonition/
   - codehilite:
-      guess_lang: false
+      guess_lang: true
   - toc:
       permalink: true

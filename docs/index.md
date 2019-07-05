@@ -6,9 +6,53 @@
 
 [![Documentation](https://img.shields.io/badge/doc-latest-blue.svg)](https://smarie.github.io/python-getversion/) [![PyPI](https://img.shields.io/pypi/v/getversion.svg)](https://pypi.python.org/pypi/getversion/) [![Downloads](https://pepy.tech/badge/getversion)](https://pepy.tech/project/getversion) [![Downloads per week](https://pepy.tech/badge/getversion/week)](https://pepy.tech/project/getversion) [![GitHub stars](https://img.shields.io/github/stars/smarie/python-getversion.svg)](https://github.com/smarie/python-getversion/stargazers)
 
-Do you need a reliable way to get a version number corresponding to a python object ? `getversion` was made for this. It combines several existing strategies to cover the broadest possible set of cases. It is easily extensible so that adding new cases is extremely easy. Do not hesitate to open an [issue or a PR](https://github.com/smarie/python-getversion/issues) if the current 5 built-in strategies do not work for you!
+Do you need a reliable way to get a version number corresponding to a python object ? `getversion` was made for this. It **combines the best existing strategies** to cover the broadest possible set of cases. It is **easily extensible** so that adding new strategies is extremely easy. Do not hesitate to open an [issue or a PR](https://github.com/smarie/python-getversion/issues) if the current 5 built-in strategies do not work for you!
+
+If you wish to know why "yet another package" is necessary, have a look at the [motivation section](#motivation). 
+
+## Installing
+
+```bash
+> pip install getversion
+```
+
+## Usage
+
+### a- Already imported
+
+```python
+from getversion import get_module_version
+
+# Get the version of an imported module
+from xml import dom
+print(get_module_version(dom))
+```
+
+### b- Not yet imported
+
+**TODO**
 
 ## Motivation
+
+### Packages, modules, dists
+
+In python:
+ - a *module* is a file ending with `.py`, containing some symbols.
+ - a *package* is a folder containing a `__init__.py` file, as well as any number of subpackages and submodules.
+
+See also [this explanation](https://www.quora.com/What-is-the-difference-between-Python-modules-packages-libraries-and-frameworks).
+
+When you distribute python code, you distribute either a single module, or a single package. The name of this "root" module or package is the first name that appears in an import:
+
+```python
+import xml              # root package 'xml'
+import xml.dom          # subpackage 'dom' of pkg 'xml'
+import xml.dom.minidom  # submodule 'minidom' of pkg 'xml.dom'
+```
+
+See [distributing python modules](https://docs.python.org/3/distributing/index.html).
+
+### Why another package ?
 
 Version numbers in python can be in very different places depending on the case:
 
@@ -29,52 +73,25 @@ In addition to this, at runtime (when you need that version number), packages an
  - non-built and added to the PYTHON PATH (`sys.path`)
 
 This variety of settings makes it very difficult for existing solutions to tackle all aspects of this problem. `pkg_resources` is probably the best way to get it as of today (like [this](https://stackoverflow.com/questions/8880661/getting-package-version-using-pkg-resources)), but does not work for example when a package is an unzipped wheel added to the PYTHON PATH. It also does not support built-in modules.
- 
-
-## Installing
-
-```bash
-> pip install getversion
-```
-
-## Reminder: packages, modules, distributing
-
-In python:
- - a *module* is a file ending with `.py`, containing some symbols.
- - a *package* is a folder containing a `__init__.py` file, as well as any number of subpackages and submodules.
-
-See also [this explanation](https://www.quora.com/What-is-the-difference-between-Python-modules-packages-libraries-and-frameworks).
-
-When you distribute python code, you distribute either a single module, or a single package. The name of this "root" module or package is the first name that appears in an import:
-
-```python
-import html         # root package 'html'
-import html.parser  # submodule 'parser' of pkg 'html'
-```
-
-See [distributing python modules](https://docs.python.org/3/distributing/index.html).
-
-
-## Usage
-
-TODO
 
 
 ## Main features / benefits
 
- * **Get package version easily**: a single method will get you what you need, whatever the variety of ways needed to get the information
- * **Support for multiple strategies**: PEP396/version, setuptools/`pkg_resources`, PEP427/wheel, git...
+ * **Get module and package version easily**: a single method will get you what you need, whatever the variety of ways needed to get the information
+ * **Support for multiple strategies**: built-in modules, PEP396/version, setuptools/`pkg_resources`, PEP427/wheel, setuptools/eggs, git...
 
 ## See Also
 
 Concerning the strategies:
 
- - [PEP314/Metadata](https://www.python.org/dev/peps/pep-0314/)
+ - [stdlib_list](https://github.com/jackmaney/python-stdlib-list) for built-in modules detection
  - [PEP396/\__version__](https://www.python.org/dev/peps/pep-0396/)
- - `pkg_resources` [documentation](https://setuptools.readthedocs.io/en/latest/pkg_resources.html) and [PEP365](https://www.python.org/dev/peps/pep-0365/)
- - [PEP427/wheel](https://www.python.org/dev/peps/pep-0427/)
+ - [PEP314/Metadata](https://www.python.org/dev/peps/pep-0314/)
+ 
+    - `pkg_resources` [documentation](https://setuptools.readthedocs.io/en/latest/pkg_resources.html) and [PEP365](https://www.python.org/dev/peps/pep-0365/)
+    - [PEP427/wheel](https://www.python.org/dev/peps/pep-0427/)
+ 
  - [setuptools_scm](https://github.com/pypa/setuptools_scm/)
- - [stdlib_list](https://github.com/jackmaney/python-stdlib-list)
 
 Discussion on PyPa: [here](https://github.com/pypa/setuptools/issues/1316).
 
@@ -87,7 +104,29 @@ Other attempts to reach the same target:
  
 ### Package versioning best practices
 
-See [this post](https://stackoverflow.com/questions/17583443/what-is-the-correct-way-to-share-package-version-with-setup-py-and-the-package/17638236#17638236) for a start.
+If your project uses git, I would recommend the following:
+
+ * in `__init__.py`
+
+        try:
+           # import version from _version.py generated by setuptools_scm
+           from _version import version
+           __version__ = version
+           del version
+        except ImportError:
+           # use setuptools_scm to get the current version using git
+           from setuptools_scm import get_version
+           from os.path import join, pardir, dirname
+           __version__ = get_version(join(dirname(__file__), pardir))
+
+ * when you wish to create releases, after git-tagging your project and before publishing it, do
+ 
+        from setuptools_scm import get_version
+        get_version('.', write_to='<pkg_name>/_version.py')
+
+   for example in your continuous integration engine: `python -c "from setuptools_scm import get_version;get_version('.', write_to='<pkg_name>/_version.py')"`
+
+Inspiration came from [this post](https://stackoverflow.com/questions/17583443/what-is-the-correct-way-to-share-package-version-with-setup-py-and-the-package/17638236#17638236) and [this one](https://github.com/pypa/setuptools_scm/issues/328).
 
 ### Others
 
