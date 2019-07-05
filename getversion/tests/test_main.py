@@ -6,6 +6,7 @@ import pytest
 from pytest_cases import pytest_fixture_plus, fixture_union
 from setuptools_scm import get_version
 
+import getversion
 from getversion import get_module_version
 
 
