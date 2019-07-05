@@ -32,9 +32,10 @@ def get_test_stats(junit_xml='reports/junit/junit.xml'  # type: str
     skipped = len(tr.skipped)
     runned = tr.testsRun - skipped
     failed = len(tr.failures)
+    errors = len(tr.errors)
     success = runned - failed
 
-    success_percentage = round(success * 100 / runned)
+    success_percentage = round(success * 100 / (runned + errors))
 
     return TestStats(success_percentage, success, runned, skipped)
 
