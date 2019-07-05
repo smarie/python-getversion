@@ -111,9 +111,9 @@ def err_dct_to_str(err_dct  # Dict
     msg = ""
     for module, err_dct in err_dct.items():
         if len(err_dct) > 0:
-            msg += " - Attempts for module %s:\n" % module
+            msg += " - Attempts for module '%s':\n" % module
             for strategy, err in err_dct.items():
-                msg += "   - %s: %s\n" % (get_strategy_name(strategy), err)
+                msg += "   - <%s>: %s\n" % (get_strategy_name(strategy), err)
     return msg
 
 
@@ -188,6 +188,7 @@ def get_module_version(module,                                        # type: Mo
 
     all_errors = OrderedDict()
 
+    original_module = module
     module_name = module.__name__
     next_split_idx = module_name.rfind('.')
     is_root_module = next_split_idx < 0
@@ -214,14 +215,14 @@ def get_module_version(module,                                        # type: Mo
                     raise InvalidVersionFound(version_str)
                 else:
                     errors[strategy] = "SUCCESS: %s" % version_str
-                    return version_str, DetailedResults(module, all_errors, strategy, version_str)
+                    return version_str, DetailedResults(original_module, all_errors, strategy, version_str)
 
             except Exception as e:
                 # log the error
                 errors[strategy] = e
 
         if is_root_module:
-            module = None
+            del module
             break
         else:
             # find parent package
@@ -231,4 +232,4 @@ def get_module_version(module,                                        # type: Mo
             module = sys.modules[module_name]
 
     # finally return
-    raise ModuleVersionNotFound(module, errors_dict=all_errors)
+    raise ModuleVersionNotFound(original_module, errors_dict=all_errors)
