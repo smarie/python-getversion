@@ -24,6 +24,7 @@ before_install:
 
 install:
   - pip list
+  - pip install setuptools_scm  # apparently python 2 does not support that it is installed simultaneously with pytest-cases
   - python ci_tools/py_install.py pip ci_tools/requirements-pip.txt
   # travis-specific installs
   - pip install PyGithub  # for ci_tools/github_release.py
