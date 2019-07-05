@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.5.1 - Bugfixes
+
+ - fixed PyPi doc
+ - `__version__` should now be available on the distributed `getversion` package.
+
 ### 0.5.0 - First public version
 
 Simplified design: now a single `get_module_version` function is the entry point and compiles 4 strategies:
