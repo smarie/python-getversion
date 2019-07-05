@@ -29,6 +29,7 @@ python_sys_version = sys_version = '.'.join([str(v) for v in sys.version_info])
                                          'collections',
                                          'xml',
                                          'xml.dom',
+                                         'xml.dom.minidom',
                                          # 'multiprocessing.connection', not in py2
                                          # 'os.path' failing, TODO
                                          ])
