@@ -2,7 +2,12 @@
 
 ### 0.5.0 - First public version
 
-TODO
+Simplified design: now a single `get_module_version` function is the entry point and compiles 4 strategies:
+
+ - `__version__` attribute
+ - built-in module using `stdlib_list`
+ - unzipped wheel & unzipped egg
+ - git scm using `setuptools_scm`
 
 ### 0.4.0 - extracted
 
