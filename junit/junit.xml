@@ -1,1 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="18" time="0.358"><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-html]" time="0.005228519439697266"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-html.entities]" time="0.004403591156005859"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-collections]" time="0.003523588180541992"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-collections.abc]" time="0.0033283233642578125"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-re]" time="0.003551959991455078"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-json]" time="0.0029714107513427734"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version]" time="0.005193948745727539"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version.submodule_with_version]" time="0.0052034854888916016"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-json.encoder-json]" time="0.003029346466064453"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_no_version-dummy2]" time="0.0060346126556396484"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.submodule_no_version-dummy2]" time="0.005500316619873047"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_with_version.submodule_no_version-dummy2.subpkg_with_version]" time="0.004162311553955078"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy]" time="0.006326913833618164"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3]" time="0.008152246475219727"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3b]" time="0.005541324615478516"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy4]" time="0.00771641731262207"></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_self_uninstalled_git]" time="0.07711029052734375"></testcase><testcase classname="getversion.tests.test_plugin_distinfo" file="getversion/tests/test_plugin_distinfo.py" line="5" name="test_dist_info" time="0.0017578601837158203"></testcase></testsuite>
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="18" time="0.352"><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-html]" time="0.005488157272338867"><system-out>Version &apos;3.5.6.final.0&apos; found for module &apos;html&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+ - Attempts for module html:
+   - get_module_version_attr: module &apos;html&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-html.entities]" time="0.0049381256103515625"><system-out>Version &apos;3.5.6.final.0&apos; found for module &apos;html&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+ - Attempts for module html.entities:
+   - get_module_version_attr: module &apos;html.entities&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module html:
+   - get_module_version_attr: module &apos;html&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-collections]" time="0.0049152374267578125"><system-out>Version &apos;3.5.6.final.0&apos; found for module &apos;collections&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+ - Attempts for module collections:
+   - get_module_version_attr: module &apos;collections&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_builtin_module_and_submodule-collections.abc]" time="0.004167079925537109"><system-out>Version &apos;3.5.6.final.0&apos; found for module &apos;collections&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+ - Attempts for module collections.abc:
+   - get_module_version_attr: module &apos;collections.abc&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module collections:
+   - get_module_version_attr: module &apos;collections&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-re]" time="0.004060029983520508"><system-out>Version &apos;2.2.1&apos; found for module &apos;re&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module re:
+   - get_module_version_attr: SUCCESS: 2.2.1
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-json]" time="0.0038704872131347656"><system-out>Version &apos;2.0.9&apos; found for module &apos;json&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module json:
+   - get_module_version_attr: SUCCESS: 2.0.9
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version]" time="0.0061953067779541016"><system-out>Version &apos;4.5.6&apos; found for module &apos;dummy2.subpkg_with_version&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version:
+   - get_module_version_attr: SUCCESS: 4.5.6
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version.submodule_with_version]" time="0.005282163619995117"><system-out>Version &apos;1.2.3&apos; found for module &apos;dummy2.subpkg_with_version.submodule_with_version&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version.submodule_with_version:
+   - get_module_version_attr: SUCCESS: 1.2.3
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-json.encoder-json]" time="0.004035234451293945"><system-out>Version &apos;2.0.9&apos; found for module &apos;json&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module json.encoder:
+   - get_module_version_attr: module &apos;json.encoder&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module json:
+   - get_module_version_attr: SUCCESS: 2.0.9
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_no_version-dummy2]" time="0.004904985427856445"><system-out>Version &apos;10.9.8&apos; found for module &apos;dummy2&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_no_version:
+   - get_module_version_attr: module &apos;dummy2.subpkg_no_version&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module dummy2:
+   - get_module_version_attr: SUCCESS: 10.9.8
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.submodule_no_version-dummy2]" time="0.004210948944091797"><system-out>Version &apos;10.9.8&apos; found for module &apos;dummy2&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module dummy2.submodule_no_version:
+   - get_module_version_attr: module &apos;dummy2.submodule_no_version&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module dummy2:
+   - get_module_version_attr: SUCCESS: 10.9.8
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_with_version.submodule_no_version-dummy2.subpkg_with_version]" time="0.005161762237548828"><system-out>Version &apos;4.5.6&apos; found for module &apos;dummy2.subpkg_with_version&apos; by strategy &apos;get_module_version_attr&apos;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version.submodule_no_version:
+   - get_module_version_attr: module &apos;dummy2.subpkg_with_version.submodule_no_version&apos; has no attribute &apos;__version__&apos;
+ - Attempts for module dummy2.subpkg_with_version:
+   - get_module_version_attr: SUCCESS: 4.5.6
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy]" time="0.0070531368255615234"><system-out>Version &apos;2.9.2&apos; found for module &apos;dummy&apos; by strategy &apos;get_unzipped_wheel_or_egg_version&apos;, after the following failed attempts:
+ - Attempts for module dummy:
+   - get_module_version_attr: module &apos;dummy&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 2.9.2
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3]" time="0.005918025970458984"><system-out>Version &apos;0.1.0&apos; found for module &apos;dummy3&apos; by strategy &apos;get_unzipped_wheel_or_egg_version&apos;, after the following failed attempts:
+ - Attempts for module dummy3:
+   - get_module_version_attr: module &apos;dummy3&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy3 is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 0.1.0
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3b]" time="0.007819175720214844"><system-out>Version &apos;1.2.3&apos; found for module &apos;dummy3b&apos; by strategy &apos;get_unzipped_wheel_or_egg_version&apos;, after the following failed attempts:
+ - Attempts for module dummy3b:
+   - get_module_version_attr: module &apos;dummy3b&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy3b is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 1.2.3
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_unzipped_wheel_or_egg-dummy4]" time="0.006490468978881836"><system-out>Version &apos;1.1.1&apos; found for module &apos;dummy4&apos; by strategy &apos;get_unzipped_wheel_or_egg_version&apos;, after the following failed attempts:
+ - Attempts for module dummy4:
+   - get_module_version_attr: module &apos;dummy4&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy4 is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 1.1.1
+
+</system-out></testcase><testcase classname="getversion.tests.test_main" file="getversion/tests/test_main.py" line="126" name="test_modules_version[mod_is_self_uninstalled_git]" time="0.06747627258300781"><system-out>Version &apos;0.1.dev32+g15839b7.d20190705&apos; found for module &apos;getversion&apos; by strategy &apos;get_version_using_setuptools_scm&apos;, after the following failed attempts:
+ - Attempts for module getversion:
+   - get_module_version_attr: module &apos;getversion&apos; has no attribute &apos;__version__&apos;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module getversion is not a built-in module
+   - get_unzipped_wheel_or_egg_version: not enough arguments for format string
+   - get_version_using_setuptools_scm: SUCCESS: 0.1.dev32+g15839b7.d20190705
+
+</system-out></testcase><testcase classname="getversion.tests.test_plugin_distinfo" file="getversion/tests/test_plugin_distinfo.py" line="5" name="test_dist_info" time="0.001730203628540039"></testcase></testsuite>

@@ -235,7 +235,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 05-Jul-2019 at 08:44:27 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.21.1</p>
+    <p>Report generated on 05-Jul-2019 at 09:59:06 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.21.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -246,13 +246,13 @@ function filter_table(elem) {
         <td>/usr/lib/jvm/java-8-oracle</td></tr>
       <tr>
         <td>Packages</td>
-        <td>{&apos;pytest&apos;: &apos;3.7.1&apos;, &apos;pluggy&apos;: &apos;0.7.1&apos;, &apos;py&apos;: &apos;1.5.4&apos;}</td></tr>
+        <td>{&apos;py&apos;: &apos;1.5.4&apos;, &apos;pytest&apos;: &apos;3.7.1&apos;, &apos;pluggy&apos;: &apos;0.7.1&apos;}</td></tr>
       <tr>
         <td>Platform</td>
         <td>Linux-4.4.0-101-generic-x86_64-with-debian-jessie-sid</td></tr>
       <tr>
         <td>Plugins</td>
-        <td>{&apos;cov&apos;: &apos;2.6.0&apos;, &apos;cases&apos;: &apos;1.10.1&apos;, &apos;metadata&apos;: &apos;1.8.0&apos;, &apos;html&apos;: &apos;1.21.1&apos;}</td></tr>
+        <td>{&apos;html&apos;: &apos;1.21.1&apos;, &apos;metadata&apos;: &apos;1.8.0&apos;, &apos;cov&apos;: &apos;2.6.0&apos;, &apos;cases&apos;: &apos;1.10.1&apos;}</td></tr>
       <tr>
         <td>Python</td>
         <td>3.5.6</td></tr>
@@ -261,28 +261,30 @@ function filter_table(elem) {
         <td>master</td></tr>
       <tr>
         <td>TRAVIS_BUILD_ID</td>
-        <td>554591720</td></tr>
+        <td>554619183</td></tr>
       <tr>
         <td>TRAVIS_BUILD_NUMBER</td>
-        <td>12</td></tr>
+        <td>13</td></tr>
       <tr>
         <td>TRAVIS_COMMIT</td>
-        <td>99f7e1d92a1bf5ef8847efec62af87f549681b38</td></tr>
+        <td>15839b787aaa1062a39c66b9cfb344c9db89f5c7</td></tr>
       <tr>
         <td>TRAVIS_COMMIT_MESSAGE</td>
-        <td>fixed tests</td></tr>
+        <td>Refactoring: non-main methods are now in plugin files.
+`get_module_version` now outputs an instance of `DetailedResults` as second output
+`DetailedResults` and `ModuleVersionNotFound` are now exported at root package level</td></tr>
       <tr>
         <td>TRAVIS_COMMIT_RANGE</td>
-        <td>8bc9e16eb7d1...99f7e1d92a1b</td></tr>
+        <td>99f7e1d92a1b...15839b787aaa</td></tr>
       <tr>
         <td>TRAVIS_EVENT_TYPE</td>
         <td>push</td></tr>
       <tr>
         <td>TRAVIS_JOB_ID</td>
-        <td>554591722</td></tr>
+        <td>554619185</td></tr>
       <tr>
         <td>TRAVIS_JOB_NUMBER</td>
-        <td>12.2</td></tr>
+        <td>13.2</td></tr>
       <tr>
         <td>TRAVIS_OS_NAME</td>
         <td>linux</td></tr>
@@ -296,7 +298,7 @@ function filter_table(elem) {
         <td>TRAVIS_SUDO</td>
         <td>true</td></tr></table>
     <h2>Summary</h2>
-    <p>18 tests ran in 0.36 seconds. </p>
+    <p>18 tests ran in 0.35 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">18 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -316,7 +318,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;3.5.6.final.0&#x27; found for module &#x27;html&#x27; by strategy &#x27;get_builtin_module_version&#x27;, after the following failed attempts:
+ - Attempts for module html:
+   - get_module_version_attr: module &#x27;html&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -325,7 +333,15 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;3.5.6.final.0&#x27; found for module &#x27;html&#x27; by strategy &#x27;get_builtin_module_version&#x27;, after the following failed attempts:
+ - Attempts for module html.entities:
+   - get_module_version_attr: module &#x27;html.entities&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module html:
+   - get_module_version_attr: module &#x27;html&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -334,7 +350,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;3.5.6.final.0&#x27; found for module &#x27;collections&#x27; by strategy &#x27;get_builtin_module_version&#x27;, after the following failed attempts:
+ - Attempts for module collections:
+   - get_module_version_attr: module &#x27;collections&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -343,7 +365,15 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;3.5.6.final.0&#x27; found for module &#x27;collections&#x27; by strategy &#x27;get_builtin_module_version&#x27;, after the following failed attempts:
+ - Attempts for module collections.abc:
+   - get_module_version_attr: module &#x27;collections.abc&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module collections:
+   - get_module_version_attr: module &#x27;collections&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: SUCCESS: 3.5.6.final.0
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -352,7 +382,11 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;2.2.1&#x27; found for module &#x27;re&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module re:
+   - get_module_version_attr: SUCCESS: 2.2.1
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -361,7 +395,11 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;2.0.9&#x27; found for module &#x27;json&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module json:
+   - get_module_version_attr: SUCCESS: 2.0.9
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -370,7 +408,11 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;4.5.6&#x27; found for module &#x27;dummy2.subpkg_with_version&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version:
+   - get_module_version_attr: SUCCESS: 4.5.6
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -379,7 +421,11 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;1.2.3&#x27; found for module &#x27;dummy2.subpkg_with_version.submodule_with_version&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version.submodule_with_version:
+   - get_module_version_attr: SUCCESS: 1.2.3
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -388,7 +434,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;2.0.9&#x27; found for module &#x27;json&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module json.encoder:
+   - get_module_version_attr: module &#x27;json.encoder&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module json:
+   - get_module_version_attr: SUCCESS: 2.0.9
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -397,7 +449,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;10.9.8&#x27; found for module &#x27;dummy2&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_no_version:
+   - get_module_version_attr: module &#x27;dummy2.subpkg_no_version&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module dummy2:
+   - get_module_version_attr: SUCCESS: 10.9.8
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -406,7 +464,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;10.9.8&#x27; found for module &#x27;dummy2&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module dummy2.submodule_no_version:
+   - get_module_version_attr: module &#x27;dummy2.submodule_no_version&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module dummy2:
+   - get_module_version_attr: SUCCESS: 10.9.8
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -415,7 +479,13 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;4.5.6&#x27; found for module &#x27;dummy2.subpkg_with_version&#x27; by strategy &#x27;get_module_version_attr&#x27;, after the following failed attempts:
+ - Attempts for module dummy2.subpkg_with_version.submodule_no_version:
+   - get_module_version_attr: module &#x27;dummy2.subpkg_with_version.submodule_no_version&#x27; has no attribute &#x27;__version__&#x27;
+ - Attempts for module dummy2.subpkg_with_version:
+   - get_module_version_attr: SUCCESS: 4.5.6
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -424,7 +494,14 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;2.9.2&#x27; found for module &#x27;dummy&#x27; by strategy &#x27;get_unzipped_wheel_or_egg_version&#x27;, after the following failed attempts:
+ - Attempts for module dummy:
+   - get_module_version_attr: module &#x27;dummy&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 2.9.2
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -433,7 +510,14 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;0.1.0&#x27; found for module &#x27;dummy3&#x27; by strategy &#x27;get_unzipped_wheel_or_egg_version&#x27;, after the following failed attempts:
+ - Attempts for module dummy3:
+   - get_module_version_attr: module &#x27;dummy3&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy3 is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 0.1.0
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -442,7 +526,14 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;1.2.3&#x27; found for module &#x27;dummy3b&#x27; by strategy &#x27;get_unzipped_wheel_or_egg_version&#x27;, after the following failed attempts:
+ - Attempts for module dummy3b:
+   - get_module_version_attr: module &#x27;dummy3b&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy3b is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 1.2.3
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -451,7 +542,14 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;1.1.1&#x27; found for module &#x27;dummy4&#x27; by strategy &#x27;get_unzipped_wheel_or_egg_version&#x27;, after the following failed attempts:
+ - Attempts for module dummy4:
+   - get_module_version_attr: module &#x27;dummy4&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module dummy4 is not a built-in module
+   - get_unzipped_wheel_or_egg_version: SUCCESS: 1.1.1
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -460,7 +558,15 @@ function filter_table(elem) {
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &#x27;0.1.dev32+g15839b7.d20190705&#x27; found for module &#x27;getversion&#x27; by strategy &#x27;get_version_using_setuptools_scm&#x27;, after the following failed attempts:
+ - Attempts for module getversion:
+   - get_module_version_attr: module &#x27;getversion&#x27; has no attribute &#x27;__version__&#x27;
+   - get_version_using_pkgresources: Invalid version number: None
+   - get_builtin_module_version: Module getversion is not a built-in module
+   - get_unzipped_wheel_or_egg_version: not enough arguments for format string
+   - get_version_using_setuptools_scm: SUCCESS: 0.1.dev32+g15839b7.d20190705
+
+</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
