@@ -3,6 +3,7 @@ try:
 except ImportError:
     from scandir import scandir
 
+import re
 from os.path import exists, join, pardir, abspath
 
 try: # python 3
@@ -93,39 +94,35 @@ def get_unzipped_wheel_or_egg_version(module  # type: ModuleType
     #
     # or matching the egg equivalent
     # https://setuptools.readthedocs.io/en/latest/formats.html#filename-embedded-metadata
-    prefix = module.__name__
-    wheel_suffix = '.dist-info'
-    egg_suffix = '.egg-info'
+    module_name = module.__name__
+
+    # patterns to match
+    distinfo_pattern = re.compile("%s-(?P<version>[^-]*)\\.dist-info" % module_name)
+    egginfo_pattern = re.compile("%s(-(?P<version>[^-]*?)(-py(?P<pyver>[^-]*?)(-(?P<platform>[^-]*?))?)?)?\\.egg-info"
+                                 % module_name)
     it = scandir(search_dir)
     try:
         for entry in it:
-            if entry.is_dir() and entry.name.startswith(prefix):
-                if entry.name.endswith(wheel_suffix):
+            if entry.is_dir():
+                distinfo_match = distinfo_pattern.match(entry.name)
+                if distinfo_match is not None:
                     # WHEEL
-                    version = entry.name[len(prefix):(len(entry.name) - len(wheel_suffix))]
-                    if len(version) > 1:
-                        assert version[0] == '-'
-                        return version[1:]
+                    version = distinfo_match.groupdict()['version']
+                    if len(version) > 0:
+                        return version
                     else:
                         # slower because we have to open the metadata file
                         return read_version_from_dist_info(entry.path)
 
-                elif entry.name.endswith(egg_suffix):
-                    # EGG
-                    print("DEBUG note: found egg entry with name %s" % entry.name)
-                    _start = len(prefix)
-                    _end = len(entry.name) - len(egg_suffix)
-                    version = entry.name[_start:_end]
-                    print("DEBUG note: version extracted [%s:%s] is %s" % (_start, _end, version))
-                    if len(version) > 1:
-                        assert version[0] == '-'
-                        last_idx = version[1:].find('-')
-                        if last_idx == -1:
-                            return version[1:]
+                else:
+                    egginfo_match = egginfo_pattern.match(entry.name)
+                    if egginfo_match is not None:
+                        # EGG
+                        version = egginfo_match.groupdict()['version']
+                        if version is not None and len(version) > 0:
+                            return version
                         else:
-                            return version[1:(last_idx+1)]
-                    else:
-                        return read_version_from_egg_info(entry.path)
+                            return read_version_from_egg_info(entry.path)
 
     finally:
         # end iterator
