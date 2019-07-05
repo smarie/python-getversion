@@ -23,7 +23,15 @@ python_sys_version = sys_version = '.'.join([str(v) for v in sys.version_info])
 
 
 @pytest_fixture_plus
-@pytest.mark.parametrize("module_name", ['html', 'html.entities', 'collections', 'collections.abc'])
+@pytest.mark.parametrize("module_name", [
+                                         # 'html',  , not in py2
+                                         # 'html.entities',   , not in py2
+                                         'collections',
+                                         'xml',
+                                         'xml.dom',
+                                         # 'multiprocessing.connection', not in py2
+                                         # 'os.path' failing, TODO
+                                         ])
 def builtin_module_and_submodule(module_name):
     """
     These modules have a valid __version__ attribute
