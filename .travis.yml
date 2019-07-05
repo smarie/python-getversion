@@ -76,10 +76,10 @@ after_success:
 deploy:
   # Create a _version.py on tags
   - provider: script
-    script: python ci_tools/write_version.py getversion
+    script: python ci_tools/write_version.py ./getversion
     skip_cleanup: true
     on:
-      tags: true
+#      tags: true
       python: 3.5  #only one of the builds have to be deployed
 
   # Deploy on PyPI on tags
