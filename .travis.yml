@@ -76,7 +76,7 @@ after_success:
 deploy:
   # Create a _version.py on tags
   - provider: script
-    script: python -c "from setuptools_scm import get_version;get_version('.', write_to='getversion/_version.py')"
+    script: python ci_tools/write_version.py getversion
     skip_cleanup: true
     on:
       tags: true
