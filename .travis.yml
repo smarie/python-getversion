@@ -74,6 +74,14 @@ after_success:
     fi
 
 deploy:
+  # Create a _version.py on tags
+  - provider: script
+    script: python -c "from setuptools_scm import get_version;get_version('.', write_to='getversion/_version.py')"
+    skip_cleanup: true
+    on:
+      tags: true
+      python: 3.5  #only one of the builds have to be deployed
+
   # Deploy on PyPI on tags
   - provider: pypi
     user: "smarie"
