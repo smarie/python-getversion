@@ -112,6 +112,7 @@ def get_unzipped_wheel_or_egg_version(module  # type: ModuleType
 
                 elif entry.name.endswith(egg_suffix):
                     # EGG
+                    print("DEBUG note: found egg entry with name %s" % entry.name)
                     version = entry.name[len(prefix):(len(entry.name) - len(egg_suffix))]
                     if len(version) > 1:
                         assert version[0] == '-'
