@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.5.4 - Fixed bug in case of package both installed and in the path
+
+Fixed bug (incorrect version number) happening when a package is both installed and available on python path. This typically happens when a developer is working on a new version of a package while an older version is already installed. Fixes [#3](https://github.com/smarie/python-getversion/issues/3).
+
 ### 0.5.3 - Self `__version__`
 
 `__version__` should now be available on the distributed `getversion` package.
