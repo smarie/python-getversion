@@ -140,7 +140,14 @@ If your project uses git, I would recommend the following:
            from os.path import join, pardir, dirname
            __version__ = get_version(join(dirname(__file__), pardir))
 
- * when you wish to create releases, after git-tagging your project and before publishing it, do
+ * then, EITHER in `setup.py`:
+ 
+        setup(
+          ...
+          use_scm_version={'write_to': '%s/_version.py' % DISTNAME}
+        )  
+
+ * OR when you wish to create releases, after git-tagging your project and before publishing it, do
  
         from setuptools_scm import get_version
         get_version('.', write_to='<pkg_name>/_version.py')
