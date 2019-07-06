@@ -79,7 +79,6 @@ deploy:
   # Deploy on PyPI on tags
   - provider: pypi
     user: "smarie"
-    skip_cleanup: true  # this is needed if we want to preserve the _version.py file created above
     password:
       secure: "yaf389gcod/g9nvHtgt4AHuHi2qeVljwuHOTb5l4N2dkoGQz+UZiEiXY80+KcZ3XPHcE2MsrFNO2rKqHVCOjwvtrZCNjM9w2Zk+jBAyOKKx1SICWbfzvhlZN0pSNee6+805N6MrlzJ3SlgtsJeMjLttrh51Zrh2LsashSDI9YNVRG1a5iB6k8LOCp+5PZcuhh9qA0tWxQdxDU/NGcazGx97nrjT+xHaQ1agDt/h9wOZoLlUK+A1TnVesXF8k1DC6sirPmtvF5fCKOFniHZwFV2hS/htEgCuK5fpjheD6nGKNguUw88wiHTCNIuebyqaab79HPrWUNNpoOfJ8sSecJs0d9Kf647AueN8XX3KSDyhs4P+JwtRaAYCsVkqKbqyxlxE6bxe1KoRFREqk9mrad/ify/N9Cwrc02vkuJu3mBNZciO8oqosY1xRlvQQxz+p201eaads8cIMfzJkRVbIF8QC2ADfH9uGnwp1St6lBDx88+ZtM9LvPIzaQsvMXAqvA5mN4TlFBFxDuYDnL6C/sPAfk+Mc8hRWQ0CA2lwRQbLkQXI0VF0QpIAJbNIDrE8apYDVGZ6wZsy+TP5v9yxR2CM3mB+qzX71kYsvNHB3DlK89PXhRt/qLnY4+lhiIwC24YsOiS3KRQlWrE+3fi/8TzNjsrFV/UAnzW9jQk9WkeY="
     on:
