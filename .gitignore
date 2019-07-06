@@ -112,4 +112,4 @@ site/
 # travis CI
 github_travis_rsa*
 reports
-*/_version.py # so that version.py can be pushed by travis without problem
+**/_version.py # so that version.py can be pushed by travis without problem
