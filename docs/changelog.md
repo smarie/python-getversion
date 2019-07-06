@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.5.2 - Self `__version__`
+### 0.5.3 - Self `__version__`
 
 `__version__` should now be available on the distributed `getversion` package.
 
