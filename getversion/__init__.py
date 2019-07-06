@@ -11,7 +11,7 @@ try:
     del version
 except ImportError:
     # use setuptools_scm to get the current version using git
-    # we do not use this because our tests rely on the fact that this is not done correctly :)
+    # we do not use this because our tests rely on the fact that this is NOT done correctly :)
     # from setuptools_scm import get_version
     # from os.path import join, pardir, dirname
     # __version__ = get_version(join(dirname(__file__), pardir))

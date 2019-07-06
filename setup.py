@@ -12,10 +12,12 @@ here = path.abspath(path.dirname(__file__))
 
 # *************** Dependencies *********
 INSTALL_REQUIRES = ['stdlib_list', 'setuptools_scm', 'functools32;python_version<"3.2"',
-                    'scandir;python_version<"3.2"']
+                    'scandir;python_version<"3.2"', 'pathlib2;python_version<"3.2"']
 DEPENDENCY_LINKS = []
 SETUP_REQUIRES = ['pytest-runner', 'setuptools_scm', 'pypandoc', 'pandoc']
-TESTS_REQUIRE = ['pytest', 'pytest-logging', 'pytest-cov', 'pytest-cases>=1.10.1']
+TESTS_REQUIRE = ['pytest', 'pytest-logging', 'pytest-cov', 'pytest-cases>=1.10.1',
+                 'makefun==1.6.8'  # we use that precise version because it does not have the __version__ attribute.
+                 ]
 EXTRAS_REQUIRE = {}
 
 # simple check

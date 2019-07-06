@@ -3,8 +3,14 @@
 #  License: BSD 3 clause
 
 from collections import OrderedDict
+
+try: # python 3+
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path
+
 from itertools import chain
-from os.path import join, exists
+from os.path import join, exists, pardir, dirname
 import sys
 from types import ModuleType
 
@@ -62,14 +68,13 @@ def get_version_using_pkgresources(module  # type: ModuleType
     In case there is an old local `.egg-info` in the package folder, this method may return the wrong version
     number. For this reason an error is raised in that case.
 
-    raises: `DistributionNotFound` if the module has not been even locally installed with "pip install ."
-    for example if the module has been added to the sys.path (typically in IDEs such as PyCharm)
+    In case the location of the found distribution is not the same than the one in the package, an error is also raised.
 
     :param module:
     :return:
     """
     # this is part of setuptools
-    from pkg_resources import working_set, Requirement, get_distribution  # get_distribution require, Distribution
+    from pkg_resources import working_set, Requirement  # get_distribution require, Distribution
 
     # First get the distribution
 
@@ -89,6 +94,10 @@ def get_version_using_pkgresources(module  # type: ModuleType
     # pkg_dist = Distribution.from_filename(module.__file__)
 
     if pkg_dist is not None:
+        if Path(pkg_dist.location) != Path(join(dirname(module.__file__), pardir)):
+            raise Exception("Another distribution of the same package (with version '%s') is installed, but is not the "
+                            "one that was imported" % pkg_dist.version)
+
         # PROTECTION: if there is an old egg-info in the folder, the version will be that one, even if not installed!
         if exists(join(pkg_dist.location, module.__name__ + ".egg-info")):
             raise Exception("There is a '%s' folder in the package location so it seems to be a source project "
