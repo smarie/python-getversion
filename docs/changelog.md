@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.5.6 - fixed setup.py classifiers
+
+It was incorrectly refering to this project as related to testing.
+
 ### 0.5.5 - Own `__version__` was incorrect
 
 Fixed [#4](https://github.com/smarie/python-getversion/issues/4).
