@@ -1,4 +1,4 @@
-# python-getversion
+# getversion
 
 *Get the version number of any python module or package, reliably.*
 
