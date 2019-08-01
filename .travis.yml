@@ -20,7 +20,7 @@ before_install:
   # (a) linux dependencies
   - sudo apt-get install pandoc
   - sudo apt-get install ant
-  - sudo apt-get install ant-optional
+  - sudo apt-get install ant-optional  # for junitreports
 
 install:
   - pip list
