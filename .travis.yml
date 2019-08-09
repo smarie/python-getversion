@@ -33,7 +33,7 @@ install:
 
 script:
 #  - coverage run tests.py
-  - pip install . -vv --no-build-isolation
+  - pip install .
   - python -c "import os; os.chdir('..'); import getversion"
   - pip uninstall -y getversion  # so that the setuptools_scm test can be executed
 # ***tests***
