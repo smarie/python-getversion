@@ -162,5 +162,5 @@ setup(
     #         'sample=sample:main',
     #     ],
     # },
-    # zip_safe=False,
+    zip_safe=False,
 )
