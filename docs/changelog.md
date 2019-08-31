@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.5.7 - minor setup.py improvement
+
+Now explicitly setting the `zip_safe` flag in `setup.py` to avoid `ply` being downloaded. From [#5](https://github.com/smarie/python-getversion/pull/5) 
+
 ### 0.5.6 - fixed setup.py classifiers
 
 It was incorrectly refering to this project as related to testing.

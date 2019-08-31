@@ -162,5 +162,8 @@ setup(
     #         'sample=sample:main',
     #     ],
     # },
+
+    # explicitly setting the flag to avoid `ply` being downloaded
+    # see https://github.com/smarie/python-getversion/pull/5
     zip_safe=False,
 )
