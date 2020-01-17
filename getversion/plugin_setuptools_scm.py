@@ -5,41 +5,68 @@
 from os.path import dirname, abspath
 
 
-def scm_get_version_recursive_root(abs_path):
-    """
-    Recursively climbs the parent folders, searching for a git root
+class GitCommandNotAvailable(Exception):
+    def __str__(self):
+        return "`git` command is not available ; please make sure that it is in your PATH."
 
-    :param abs_path:
-    :return:
-    """
-    # noinspection PyUnresolvedReferences
+
+class ScmInformationNotFound(Exception):
+    def __init__(self, initial_path):
+        self.path = initial_path
+
+    def __str__(self):
+        return "Unable to find SCM information (/.git or /.hg folder, typically) " \
+               "in the parent folders of %s" % self.path
+
+
+class SetupToolsScmNotInstalled(Exception):
+    def __str__(self):
+        return "`setuptools_scm` package does not seem to be available in your python environment. Please install it" \
+               " to enable SCM version discovery (git, hg)."
+
+
+try:
     from setuptools_scm import get_version
-    try:
-        return get_version(abs_path)
-    except LookupError as e:
-        parent_dir = dirname(abs_path)
-        if parent_dir == abs_path:
-            # cannot recurse anymore
-            raise e
+    from setuptools_scm.utils import has_command
+    has_git_command = has_command('git')
+
+    def scm_get_version_recursive_root(abs_path, initial_path):
+        """
+        Recursively climbs the parent folders, searching for a git root
+
+        :param abs_path:
+        :return:
+        """
+        try:
+            return get_version(abs_path)
+        except LookupError as e:
+            parent_dir = dirname(abs_path)
+            if parent_dir == abs_path:
+                # cannot recurse anymore
+                raise ScmInformationNotFound(initial_path)
+            else:
+                # recurse
+                return scm_get_version_recursive_root(parent_dir, initial_path=initial_path)
+
+
+    def get_version_using_setuptools_scm(module  # type: ModuleType
+                                         ):
+        # type: (...) -> str
+        """
+        get version from the source directory if it is under version control
+        :param module:
+        :return:
+        """
+        # ...using setuptools_scm if available
+        if not has_git_command:
+            raise GitCommandNotAvailable()
         else:
-            # recurse
-            return scm_get_version_recursive_root(parent_dir)
+            path = abspath(module.__file__)
+            return scm_get_version_recursive_root(path, initial_path=path)
 
-
-def get_version_using_setuptools_scm(module  # type: ModuleType
-                                     ):
-    # type: (...) -> str
-    """
-    get version from the source directory if it is under version control
-    :param module:
-    :return:
-    """
-    # ...using setuptools_scm if available
-    return scm_get_version_recursive_root(abspath(module.__file__))
-
-    # if not isinstance(s4err, str):
-    #     warn(" - (4) using setuptools_scm to find the svn/git version raised an error : [{}] {}"
-    #          "".format(type(s4err).__name__, s4err))
-    # else:
-    #     warn(" - (4) impossible to locate the package in order to find the svn/git version: {}"
-    #          "".format(s4err))
+except ImportError:
+    # no
+    def get_version_using_setuptools_scm(module  # type: ModuleType
+                                         ):
+        # type: (...) -> str
+        raise SetupToolsScmNotInstalled()
