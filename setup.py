@@ -17,7 +17,7 @@ DEPENDENCY_LINKS = []
 SETUP_REQUIRES = ['pytest-runner', 'setuptools_scm']
 TESTS_REQUIRE = ['pytest', 'pytest-logging',
                  'makefun==1.6.8'  # we use that precise version because it does not have the __version__ attribute.
-                 'pytest-cases==1.10.4',  # we use that precise version otherwise there is a conflict with makefun 1.6.8
+                 'pytest-cases==1.10.1',  # we use that precise version otherwise there is a conflict with makefun 1.6.8
                  ]
 EXTRAS_REQUIRE = {}
 
