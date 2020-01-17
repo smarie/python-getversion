@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -40,17 +40,17 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
       
       
     
     
-      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -253,6 +253,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#058-better-error-message-in-case-git-is-unavailable" class="md-nav__link">
+    0.5.8 - better error message in case git is unavailable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#057-minor-setuppy-improvement" class="md-nav__link">
     0.5.7 - minor setup.py improvement
   </a>
@@ -333,6 +340,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#058-better-error-message-in-case-git-is-unavailable" class="md-nav__link">
+    0.5.8 - better error message in case git is unavailable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#057-minor-setuppy-improvement" class="md-nav__link">
     0.5.7 - minor setup.py improvement
   </a>
@@ -401,6 +415,12 @@
                 
                 
                 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<h3 id="058-better-error-message-in-case-git-is-unavailable">0.5.8 - better error message in case <code>git</code> is unavailable<a class="headerlink" href="#058-better-error-message-in-case-git-is-unavailable" title="Permanent link">&para;</a></h3>
+<p>Improved readability of setuptools_scm related outputs:</p>
+<ul>
+<li>Now an explicit message states when <code>git</code> command is not available. Fixed <a href="https://github.com/smarie/python-getversion/issues/6">#6</a> </li>
+<li>Now an explicit message states when <code>setuptools_scm</code> is not installed. Fixed <a href="https://github.com/smarie/python-getversion/issues/7">#7</a>.</li>
+</ul>
 <h3 id="057-minor-setuppy-improvement">0.5.7 - minor setup.py improvement<a class="headerlink" href="#057-minor-setuppy-improvement" title="Permanent link">&para;</a></h3>
 <p>Now explicitly setting the <code>zip_safe</code> flag in <code>setup.py</code> to avoid <code>ply</code> being downloaded. From <a href="https://github.com/smarie/python-getversion/pull/5">#5</a> </p>
 <h3 id="056-fixed-setuppy-classifiers">0.5.6 - fixed setup.py classifiers<a class="headerlink" href="#056-fixed-setuppy-classifiers" title="Permanent link">&para;</a></h3>
@@ -432,6 +452,7 @@
 </ul>
                 
                   
+                
                 
               
               
@@ -485,7 +506,7 @@
       
     </div>
     
-      <script src="../assets/javascripts/application.c648116f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
