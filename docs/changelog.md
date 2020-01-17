@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.5.8 - better error message in case `git` is unavailable
+
+Improved readability of setuptools_scm related outputs:
+
+ - Now an explicit message states when `git` command is not available. Fixed [#6](https://github.com/smarie/python-getversion/issues/6) 
+ - Now an explicit message states when `setuptools_scm` is not installed. Fixed [#7](https://github.com/smarie/python-getversion/issues/7).
+
 ### 0.5.7 - minor setup.py improvement
 
 Now explicitly setting the `zip_safe` flag in `setup.py` to avoid `ply` being downloaded. From [#5](https://github.com/smarie/python-getversion/pull/5) 
