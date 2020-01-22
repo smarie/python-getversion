@@ -159,5 +159,7 @@ setup(
 
     # explicitly setting the flag to avoid `ply` being downloaded
     # see https://github.com/smarie/python-getversion/pull/5
+    # and to make mypy happy
+    # see https://mypy.readthedocs.io/en/latest/installed_packages.html
     zip_safe=False,
 )
