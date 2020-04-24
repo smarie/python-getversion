@@ -18,14 +18,17 @@ env:
 
 before_install:
   # (a) linux dependencies
-  - sudo apt-get install pandoc
+  - sudo apt-get install pandoc  # only for python 2 build see below
   - sudo apt-get install ant
   - sudo apt-get install ant-optional  # for junitreports
 
 install:
   - pip list
   - pip install setuptools_scm  # apparently python 2 does not support that it is installed simultaneously with pytest-cases
+  - pip install six pypandoc        # again just for python 2 build because it uses an old pytest-cases that needs it
   - python ci_tools/py_install.py pip ci_tools/requirements-pip.txt
+  # this does not work anymore on python 2 so lets only do it when needed
+  - if [ "${TRAVIS_PYTHON_VERSION}" = "3.5" ]; then pip install mkdocs-material mkdocs; fi;
   # travis-specific installs
   - pip install PyGithub  # for ci_tools/github_release.py
   - pip install codecov  # See https://github.com/codecov/example-python.
@@ -73,7 +76,7 @@ after_success:
       echo "File 'ci_tools/github_travis_rsa' has not been created, please check your encrypted repo token in .travis.yml, on the line starting with 'openssl aes-256-cbc...'"
     fi
   # -- create the _version.py file
-  - python ci_tools/write_version.py ./getversion
+  # - python ci_tools/write_version.py ./getversion
 
 deploy:
   # Deploy on PyPI on tags
