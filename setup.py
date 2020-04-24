@@ -17,10 +17,7 @@ INSTALL_REQUIRES = ['stdlib_list', 'setuptools_scm', 'functools32;python_version
                     'scandir;python_version<"3.2"', 'pathlib2;python_version<"3.2"']
 DEPENDENCY_LINKS = []
 SETUP_REQUIRES = ['pytest-runner', 'setuptools_scm']
-TESTS_REQUIRE = ['pytest', 'pytest-logging',
-                 'makefun==1.6.8'  # we use that precise version because it does not have the __version__ attribute.
-                 'pytest-cases==1.10.1',  # we use that precise version otherwise there is a conflict with makefun 1.6.8
-                 ]
+TESTS_REQUIRE = ['pytest', 'pytest-logging', 'makefun', 'pytest-cases']
 EXTRAS_REQUIRE = {}
 
 # ************** ID card *****************

@@ -106,6 +106,8 @@ def submodule_in_pkg_with_version_attr(module_name, root_module_name):
 def installed_pkg_and_module(module_name, root_module_name):
     """
     Package that does not have the __version__ attribute but is installed
+    so has the version metadata in its distribution info.
+
     :param module_name:
     :param root_module_name:
     :return:
@@ -120,6 +122,8 @@ def installed_pkg_and_module(module_name, root_module_name):
     except KeyError:
         root_module = import_module(root_module_name)
 
+    # delete the version attribute since new versions of makefun have it :)
+    del module.__version__
     return module, get_distribution(root_module.__name__).version
 
 
