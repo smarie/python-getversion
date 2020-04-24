@@ -94,7 +94,7 @@ def get_version_using_pkgresources(module  # type: ModuleType
     # pkg_dist = Distribution.from_filename(module.__file__)
 
     if pkg_dist is not None:
-        if Path(pkg_dist.location) != Path(join(dirname(module.__file__), pardir)):
+        if Path(pkg_dist.location).resolve() != Path(join(dirname(module.__file__), pardir)).resolve():
             raise Exception("Another distribution of the same package (with version '%s') is installed, but is not the "
                             "one that was imported" % pkg_dist.version)
 
