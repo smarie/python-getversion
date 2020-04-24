@@ -23,8 +23,7 @@ before_install:
 
 install:
   - pip list
-  - pip install setuptools_scm  # the old pytest-cases and makefun that we use are not universal wheels, this is required by their setup.py
-  - pip install pytest_cases==1.10.1  # again just for python 2 !
+  - pip install setuptools_scm  # apparently python 2 requires this
   - python ci_tools/py_install.py pip ci_tools/requirements-pip.txt
   # this does not work anymore on python 2 so lets only do it when needed
   - if [ "${TRAVIS_PYTHON_VERSION}" = "3.5" ]; then pip install mkdocs-material mkdocs; fi;
