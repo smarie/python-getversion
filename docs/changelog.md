@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.0 - packaging improvements
+
+ - packaging improvements: set the "universal wheel" flag to 1, and cleaned up the `setup.py`. In particular removed dependency to `six` for setup and added `py.typed` file. Fixes [#8](https://github.com/smarie/python-getversion/issues/8)
+
 ### 0.5.8 - better error message in case `git` is unavailable
 
 Improved readability of setuptools_scm related outputs:
