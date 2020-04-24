@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.1 - bugfix
+
+ - Fixed version resolution using `pkg_resources`. Fixed [#9](https://github.com/smarie/python-getversion/issues/9)
+
 ### 1.0.0 - packaging improvements
 
  - packaging improvements: set the "universal wheel" flag to 1, and cleaned up the `setup.py`. In particular removed dependency to `six` for setup and added `py.typed` file. Fixes [#8](https://github.com/smarie/python-getversion/issues/8)
