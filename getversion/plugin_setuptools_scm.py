@@ -27,8 +27,53 @@ class SetupToolsScmNotInstalled(Exception):
 
 try:
     from setuptools_scm import get_version
+    from setuptools_scm.version import guess_next_dev_version
     from setuptools_scm.utils import has_command
     has_git_command = has_command('git')
+
+
+    def fixed_version_scheme(version):
+        """
+        A fix for https://github.com/smarie/python-getversion/issues/10
+        until this is fixed in setuptools_scm or in pkg_resources
+        so that the dash is not removed when a pre-release version is present (e.g. 1.0.0-rc1)
+        """
+        # This is the bugged string would be used by the default scheme (for reference)
+        # str(version.tag)
+
+        # modify the 'pre' part only if needed
+        do_hack = version.tag.is_prerelease
+        if do_hack:
+            # make a backup
+            _version_bak = version.tag._version
+
+            # get the various parts
+            parts = _version_bak._asdict()
+
+            # make sure we understand what we do by doing a simple copy
+            clone = type(_version_bak)(**parts)
+            assert clone == _version_bak, "Internal error with this version of `pkg_resources`, please report"
+
+            # now do a mod
+            parts['pre'] = ("-",) + parts['pre']
+            _version_mod = type(_version_bak)(**parts)
+
+            # and apply it
+            version.tag._version = _version_mod
+
+            # we can check that the string has been fixed correctly
+            # str(version.tag)
+
+        # create the version string as usual by applying setuptools_scm's default version scheme
+        # note that despite the name, this does not increment anything if the tag is exact (no local mod)
+        res = guess_next_dev_version(version)
+
+        # undo our hack if needed
+        if do_hack:
+            version.tag._version = _version_bak  # noqa
+
+        return res
+
 
     def scm_get_version_recursive_root(abs_path, initial_path):
         """
@@ -38,7 +83,7 @@ try:
         :return:
         """
         try:
-            return get_version(abs_path)
+            res = get_version(abs_path, version_scheme=fixed_version_scheme)
         except LookupError as e:
             parent_dir = dirname(abs_path)
             if parent_dir == abs_path:
@@ -47,7 +92,8 @@ try:
             else:
                 # recurse
                 return scm_get_version_recursive_root(parent_dir, initial_path=initial_path)
-
+        else:
+            return res
 
     def get_version_using_setuptools_scm(module  # type: ModuleType
                                          ):
