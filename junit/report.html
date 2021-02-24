@@ -325,18 +325,18 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <p>Report generated on 24-Apr-2020 at 16:43:52</p>
+    <p>Report generated on 24-Feb-2021 at 12:21:30</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
         <td>Platform</td>
-        <td>Linux-4.15.0-1028-gcp-x86_64-with-debian-stretch-sid</td></tr>
+        <td>Linux-4.15.0-1077-gcp-x86_64-with-debian-stretch-sid</td></tr>
       <tr>
         <td>Python</td>
-        <td>3.5.6</td></tr></table>
+        <td>3.5.10</td></tr></table>
     <h2>Summary</h2>
-    <p>21 tests ran in 0.28 seconds. </p>
-    <p>(Un)check the boxes to filter the results.</p><input checked="true" data-test-result="passed" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">21 passed</span> <input checked="true" data-test-result="skipped" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span> <input checked="true" data-test-result="failed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span> <input checked="true" data-test-result="error" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span> <input checked="true" data-test-result="xfailed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span> <input checked="true" data-test-result="xpassed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span> <input checked="true" data-test-result="rerun" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span> 
+    <p>22 tests ran in 0.39 seconds. </p>
+    <p>(Un)check the boxes to filter the results.</p><input checked="true" data-test-result="passed" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">22 passed</span> <input checked="true" data-test-result="skipped" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span> <input checked="true" data-test-result="failed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span> <input checked="true" data-test-result="error" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span> <input checked="true" data-test-result="xfailed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span> <input checked="true" data-test-result="xpassed" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span> <input checked="true" data-test-result="rerun" disabled="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span> 
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -359,59 +359,68 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_builtin_module_and_submodule-collections]</td>
+          <td class="col-name">getversion/tests/test_issues.py::test_issue_10</td>
+          <td class="col-duration">0.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="5">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/builtin_module_and_submodule-collections]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.6.final.0&apos; found for module &apos;collections&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.10.final.0&apos; found for module &apos;collections&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
  - Attempts for module &apos;collections&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;collections&apos; has no attribute &apos;__version__&apos;
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
-   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.6.final.0
+   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.10.final.0
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_builtin_module_and_submodule-xml]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/builtin_module_and_submodule-xml]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.6.final.0&apos; found for module &apos;xml&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.10.final.0&apos; found for module &apos;xml&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
  - Attempts for module &apos;xml&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;xml&apos; has no attribute &apos;__version__&apos;
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
-   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.6.final.0
+   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.10.final.0
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_builtin_module_and_submodule-xml.dom]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/builtin_module_and_submodule-xml.dom]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.6.final.0&apos; found for module &apos;xml.dom&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.10.final.0&apos; found for module &apos;xml.dom&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
  - Attempts for module &apos;xml.dom&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;xml.dom&apos; has no attribute &apos;__version__&apos;
  - Attempts for module &apos;xml&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;xml&apos; has no attribute &apos;__version__&apos;
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
-   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.6.final.0
+   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.10.final.0
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_builtin_module_and_submodule-xml.dom.minidom]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/builtin_module_and_submodule-xml.dom.minidom]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.6.final.0&apos; found for module &apos;xml.dom.minidom&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;3.5.10.final.0&apos; found for module &apos;xml.dom.minidom&apos; by strategy &apos;get_builtin_module_version&apos;, after the following failed attempts:
  - Attempts for module &apos;xml.dom.minidom&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;xml.dom.minidom&apos; has no attribute &apos;__version__&apos;
  - Attempts for module &apos;xml.dom&apos;:
@@ -419,13 +428,13 @@ function filter_table(elem) {
  - Attempts for module &apos;xml&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;xml&apos; has no attribute &apos;__version__&apos;
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
-   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.6.final.0
+   - &lt;get_builtin_module_version&gt;: SUCCESS: 3.5.10.final.0
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_module_with_version_attr-re]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/module_with_version_attr-re]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -438,7 +447,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_module_with_version_attr-json]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/module_with_version_attr-json]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -451,7 +460,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/module_with_version_attr-dummy2.subpkg_with_version]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -464,7 +473,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_module_with_version_attr-dummy2.subpkg_with_version.submodule_with_version]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/module_with_version_attr-dummy2.subpkg_with_version.submodule_with_version]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -477,7 +486,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_submodule_in_pkg_with_version_attr-json.encoder-json]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/submodule_in_pkg_with_version_attr-json.encoder-json]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -492,7 +501,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_no_version-dummy2]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/submodule_in_pkg_with_version_attr-dummy2.subpkg_no_version-dummy2]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -507,7 +516,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.submodule_no_version-dummy2]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/submodule_in_pkg_with_version_attr-dummy2.submodule_no_version-dummy2]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -522,7 +531,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_submodule_in_pkg_with_version_attr-dummy2.subpkg_with_version.submodule_no_version-dummy2.subpkg_with_version]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/submodule_in_pkg_with_version_attr-dummy2.subpkg_with_version.submodule_no_version-dummy2.subpkg_with_version]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -537,21 +546,21 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_installed_pkg_and_module-makefun-makefun]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/installed_pkg_and_module-makefun-makefun]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;1.9.1&apos; found for module &apos;makefun&apos; by strategy &apos;get_version_using_pkgresources&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;1.9.5&apos; found for module &apos;makefun&apos; by strategy &apos;get_version_using_pkgresources&apos;, after the following failed attempts:
  - Attempts for module &apos;makefun&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;makefun&apos; has no attribute &apos;__version__&apos;
-   - &lt;get_version_using_pkgresources&gt;: SUCCESS: 1.9.1
+   - &lt;get_version_using_pkgresources&gt;: SUCCESS: 1.9.5
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_unzipped_wheel_or_egg-dummy]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/unzipped_wheel_or_egg-dummy]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -567,7 +576,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/unzipped_wheel_or_egg-dummy3]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -583,7 +592,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_unzipped_wheel_or_egg-dummy3b]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/unzipped_wheel_or_egg-dummy3b]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -599,7 +608,7 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_unzipped_wheel_or_egg-dummy4]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/unzipped_wheel_or_egg-dummy4]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -615,18 +624,18 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">getversion/tests/test_main.py::test_modules_version[mod_is_self_uninstalled_git]</td>
+          <td class="col-name">getversion/tests/test_main.py::test_modules_version[/self_uninstalled_git]</td>
           <td class="col-duration">0.02</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;1.0.2.dev0+g71c731a.d20200424&apos; found for module &apos;getversion&apos; by strategy &apos;get_version_using_setuptools_scm&apos;, after the following failed attempts:
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>Version &apos;1.0.3.dev0+gad3f310.d20210224&apos; found for module &apos;getversion&apos; by strategy &apos;get_version_using_setuptools_scm&apos;, after the following failed attempts:
  - Attempts for module &apos;getversion&apos;:
    - &lt;get_module_version_attr&gt;: module &apos;getversion&apos; has no attribute &apos;__version__&apos;
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
    - &lt;get_builtin_module_version&gt;: Module getversion is not a built-in module
    - &lt;get_unzipped_wheel_or_egg_version&gt;: No file matching egg-info or dist-info name patterns found in directory: /home/travis/build/smarie/python-getversion/getversion/..
-   - &lt;get_version_using_setuptools_scm&gt;: SUCCESS: 1.0.2.dev0+g71c731a.d20200424
+   - &lt;get_version_using_setuptools_scm&gt;: SUCCESS: 1.0.3.dev0+gad3f310.d20210224
 
 </div></td></tr></tbody>
       <tbody class="passed results-table-row">
