@@ -504,28 +504,22 @@
 <p>Do you need a reliable way to get a version number corresponding to a python object ? <code>getversion</code> was made for this. It <strong>combines the best existing strategies</strong> to cover the broadest possible set of cases. It is <strong>easily extensible</strong> so that adding new strategies is extremely easy. Do not hesitate to open an <a href="https://github.com/smarie/python-getversion/issues">issue or a PR</a> if the current 5 built-in strategies do not work for you!</p>
 <p>If you wish to know why "yet another package" is necessary, have a look at the <a href="#motivation">motivation section</a>. </p>
 <h2 id="installing">Installing<a class="headerlink" href="#installing" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>&gt; pip install getversion
+<div class="highlight"><pre><span></span><code>&gt; pip install getversion
 </code></pre></div>
-
-
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="a-already-imported">a- Already imported<a class="headerlink" href="#a-already-imported" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">getversion</span> <span class="kn">import</span> <span class="n">get_module_version</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">getversion</span> <span class="kn">import</span> <span class="n">get_module_version</span>
 
 <span class="c1"># Get the version of an imported module</span>
 <span class="kn">from</span> <span class="nn">xml</span> <span class="kn">import</span> <span class="n">dom</span>
 <span class="n">version</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">get_module_version</span><span class="p">(</span><span class="n">dom</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
 </code></pre></div>
-
-
 <p>yields</p>
-<div class="codehilite"><pre><span></span><code><span class="m">3</span>.7.3.final.0
+<div class="highlight"><pre><span></span><code><span class="m">3</span>.7.3.final.0
 </code></pre></div>
-
-
 <p>Why was this version found ? You can understand it from the <code>details</code>:</p>
-<div class="codehilite"><pre><span></span><code>&gt; print<span class="o">(</span>details<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>&gt; print<span class="o">(</span>details<span class="o">)</span>
 Version <span class="s1">&#39;3.7.3.final.0&#39;</span> found <span class="k">for</span> module <span class="s1">&#39;xml.dom&#39;</span> by strategy <span class="s1">&#39;get_builtin_module_version&#39;</span>, after the following failed attempts:
  - Attempts <span class="k">for</span> module <span class="s1">&#39;xml.dom&#39;</span>:
    - &lt;get_module_version_attr&gt;: module <span class="s1">&#39;xml.dom&#39;</span> has no attribute <span class="s1">&#39;__version__&#39;</span>
@@ -534,8 +528,6 @@ Version <span class="s1">&#39;3.7.3.final.0&#39;</span> found <span class="k">fo
    - &lt;get_version_using_pkgresources&gt;: Invalid version number: None
    - &lt;get_builtin_module_version&gt;: SUCCESS: <span class="m">3</span>.7.3.final.0
 </code></pre></div>
-
-
 <h3 id="b-not-yet-imported">b- Not yet imported<a class="headerlink" href="#b-not-yet-imported" title="Permanent link">&para;</a></h3>
 <p><strong>TODO</strong></p>
 <h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
@@ -545,12 +537,10 @@ Version <span class="s1">&#39;3.7.3.final.0&#39;</span> found <span class="k">fo
  - a <em>package</em> is a folder containing a <code>__init__.py</code> file, as well as any number of subpackages and submodules.</p>
 <p>See also <a href="https://www.quora.com/What-is-the-difference-between-Python-modules-packages-libraries-and-frameworks">this explanation</a>.</p>
 <p>When you distribute python code, you distribute either a single module, or a single package. The name of this "root" module or package is the first name that appears in an import:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">xml</span>              <span class="c1"># root package &#39;xml&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">xml</span>              <span class="c1"># root package &#39;xml&#39;</span>
 <span class="kn">import</span> <span class="nn">xml.dom</span>          <span class="c1"># subpackage &#39;dom&#39; of pkg &#39;xml&#39;</span>
 <span class="kn">import</span> <span class="nn">xml.dom.minidom</span>  <span class="c1"># submodule &#39;minidom&#39; of pkg &#39;xml.dom&#39;</span>
 </code></pre></div>
-
-
 <p>See <a href="https://docs.python.org/3/distributing/index.html">distributing python modules</a>.</p>
 <h3 id="why-another-package">Why another package ?<a class="headerlink" href="#why-another-package" title="Permanent link">&para;</a></h3>
 <p>Version numbers in python can be in very different places depending on the case:</p>
@@ -610,37 +600,31 @@ Version <span class="s1">&#39;3.7.3.final.0&#39;</span> found <span class="k">fo
 <ul>
 <li>
 <p>in <code>__init__.py</code></p>
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="c1"># -- Distribution mode --</span>
-    <span class="c1"># import from _version.py generated by setuptools_scm during release</span>
-    <span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">version</span> <span class="k">as</span> <span class="n">__version__</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c1"># -- Source mode --</span>
-    <span class="c1"># use setuptools_scm to get the current version from src using git</span>
-    <span class="kn">from</span> <span class="nn">setuptools_scm</span> <span class="kn">import</span> <span class="n">get_version</span> <span class="k">as</span> <span class="n">_gv</span>
-    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">_path</span>
-    <span class="n">__version__</span> <span class="o">=</span> <span class="n">_gv</span><span class="p">(</span><span class="n">_path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="n">_path</span><span class="o">.</span><span class="n">pardir</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code>try:
+    # -- Distribution mode --
+    # import from _version.py generated by setuptools_scm during release
+    from ._version import version as __version__
+except ImportError:
+    # -- Source mode --
+    # use setuptools_scm to get the current version from src using git
+    from setuptools_scm import get_version as _gv
+    from os import path as _path
+    __version__ = _gv(_path.join(_path.dirname(__file__), _path.pardir))
 </code></pre></div>
-
-
 </li>
 <li>
 <p>then, EITHER in <code>setup.py</code>:</p>
-<div class="codehilite"><pre><span></span><code>setup(
+<div class="highlight"><pre><span></span><code>setup(
   ...
   use_scm_version={&#39;write_to&#39;: &#39;%s/_version.py&#39; % &lt;pkgname&gt;}
 )
 </code></pre></div>
-
-
 </li>
 <li>
 <p>OR when you wish to create releases, after git-tagging your project and before publishing it, do</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">setuptools_scm</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="n">get_version</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">write_to</span><span class="o">=</span><span class="s1">&#39;&lt;pkg_name&gt;/_version.py&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>from setuptools_scm import get_version
+get_version(&#39;.&#39;, write_to=&#39;&lt;pkg_name&gt;/_version.py&#39;)
 </code></pre></div>
-
-
 </li>
 </ul>
 <p>for example in your continuous integration engine: <code>python -c "from setuptools_scm import get_version;get_version('.', write_to='&lt;pkg_name&gt;/_version.py')"</code></p>
@@ -701,7 +685,7 @@ Version <span class="s1">&#39;3.7.3.final.0&#39;</span> found <span class="k">fo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"translations": {"search.result.more.one": "1 more on this page", "search.result.one": "1 matching document", "search.placeholder": "Search", "search.result.term.missing": "Missing", "clipboard.copy": "Copy to clipboard", "search.config.pipeline": "trimmer, stopWordFilter", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.result.placeholder": "Type to start searching", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.other": "# matching documents", "search.config.separator": "[\\s\\-]+"}, "version": null, "features": [], "base": ".", "search": "assets/javascripts/workers/search.217ffd95.min.js"}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.217ffd95.min.js", "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.926459b3.min.js"></script>
