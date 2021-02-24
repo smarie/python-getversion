@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.2 - fixed version strings in case of prerelease tags
+
+ - Prerelease version strings such as `1.0.0-rc1` were incorrectly returned as `1.0.0rc1` (without dash) because of an issue with `setuptools_scm` due to `pkg_resources` removing the dash of prerelease versions. Fixes [#10](https://github.com/smarie/python-getversion/issues/10)
+
 ### 1.0.1 - bugfix
 
  - Fixed version resolution using `pkg_resources`. Fixed [#9](https://github.com/smarie/python-getversion/issues/9)
